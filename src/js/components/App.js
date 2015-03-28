@@ -1,9 +1,10 @@
-var React = require('react');
-var Store = require('stores/Store');
-let Slideshow = require('./Slideshow');
+const React = require('react');
+const Store = require('stores/Store');
+const Slideshow = require('./Slideshow');
+const Slide = require('./Slide');
 
-require('../../../styles/normalize.css');
-require('../../../styles/main.scss');
+require('../../styles/normalize.css');
+require('../../styles/main.scss');
 require('./App.scss');
 
 
@@ -31,15 +32,20 @@ var App = React.createClass({
   },
 
   render() {
-    return <div className='App'>
-      <Slideshow {...this.state}>
+    let {currentSlide} = this.state;
 
-        <div className="Slide">
+    return <div className='App'>
+      <Slideshow currentSlide={currentSlide}>
+
+        <Slide>
           <h1>Data viz with React</h1>
           Hello
-        </div>
+        </Slide>
 
-        <div>world</div>
+
+        <Slide>world</Slide>
+
+
       </Slideshow>
     </div>;
 

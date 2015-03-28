@@ -1,7 +1,8 @@
 SHELL := /bin/bash
 PATH := node_modules/.bin:$(PATH)
 ENV := development
-GRUNT := node --harmony ./node_modules/.bin/grunt
+NODE := node --harmony
+GRUNT := $(NODE) ./node_modules/.bin/grunt --gruntfile make.js
 
 .PHONY: all server build install clean clobber dist
 

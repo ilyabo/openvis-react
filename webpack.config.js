@@ -6,6 +6,7 @@
  */
 'use strict';
 var webpack = require('webpack');
+var bourbon = require('node-bourbon').includePaths;
 
 module.exports = {
 
@@ -36,10 +37,9 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'react-hot!jsx-loader?harmony!babel'
-    }, {
-      test: /\.scss/,
-      loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
-    }, {
+    },
+    { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&includePaths[]='+ bourbon},
+    {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
     }, {
