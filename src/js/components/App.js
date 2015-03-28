@@ -37,9 +37,9 @@ var App = React.createClass({
     return <div className='App'>
       <Slideshow currentSlide={currentSlide}>
 
-        <Slide>
-          <h1>Data viz with React</h1>
-          Hello
+        <Slide className="title">
+          <h1>Interactive Datavis with React</h1>
+          <h2>Taming the Complexity of the Changing State</h2>
         </Slide>
 
 

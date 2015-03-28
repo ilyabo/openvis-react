@@ -4,6 +4,16 @@
   @include position(absolute, 50% null null 50%);
   @include size(1024px 768px);
   border: 1px solid #ccc;
+
+  &.title {
+    h1 {
+      white-space: nowrap;
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+  }
 }
 
 .Slide-content {
