@@ -1,5 +1,8 @@
-.Slideshow {
+@import "common";
 
+.Slideshow {
+  position: absolute;
+  @include size(100% 100%);
 }
 
 .Slideshow-current {

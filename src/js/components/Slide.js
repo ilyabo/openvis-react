@@ -1,24 +1,25 @@
 const React = require('react');
-const {PureRenderMixin} = require('react/addons').addons;
 
 
 require('./Slide.scss');
 
 let Slide = React.createClass({
 
-  propTypes: {},
-
-  mixins: [PureRenderMixin],
-
+  propTypes: {
+    scale: React.PropTypes.number.isRequired
+  },
 
   render() {
-    let {children} = this.props;
+    let {children, scale} = this.props;
     return (
-      <div className="Slide">
-        { children }
+      <div className="Slide" style={{transform: 'translate(-50%, -50%) scale('+scale+')'}}>
+        <div className="Slide-content">
+          { children }
+        </div>
       </div>
     );
   }
+
 
 });
 

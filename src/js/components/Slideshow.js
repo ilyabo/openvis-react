@@ -1,4 +1,4 @@
-const React = require('react');
+const React = require('react/addons');
 const _ = require('underscore');
 const Actions = require('actions/Actions');
 
@@ -16,11 +16,19 @@ let Slideshow = React.createClass({
     currentSlide: React.PropTypes.number.isRequired
   },
 
+  getInitialState() {
+    return { scale: 1 };
+  },
+
   render() {
     let {children, currentSlide} = this.props;
+    let {scale} = this.state;
     return (
       <div className="Slideshow">
-      { children ? children[currentSlide - 1] : null }
+        { children ?
+            React.addons.cloneWithProps(children[currentSlide - 1], {scale: scale})
+          : null
+          }
         <div className="Slideshow-current">
           {currentSlide} of {children.length}
         </div>
@@ -42,12 +50,21 @@ let Slideshow = React.createClass({
     }
   },
 
+  handleResize() {
+    this.setState({
+      scale: Math.min(window.innerWidth / 1024, window.innerHeight / 768)
+    });
+  },
+
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown);
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
   },
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeydown);
+    window.removeEventListener('resize', this.handleResize, this);
   }
 
 

@@ -29,7 +29,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
     modulesDirectories: [ 'node_modules', 'src/js' ]
   },
   module: {
@@ -38,6 +38,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'react-hot!jsx-loader?harmony!babel'
     },
+    { test: /\.jsx$/, loader: 'jsx-loader?harmony' },
     { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&includePaths[]='+ bourbon},
     {
       test: /\.css$/,

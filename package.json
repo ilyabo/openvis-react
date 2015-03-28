@@ -12,6 +12,7 @@
   "dependencies": {
     "d3": "^3.5.5",
     "flux": "^2.0.1",
+    "r-layout": "^0.7.0",
     "react": "~0.12.2",
     "underscore": "^1.8.1"
   },
