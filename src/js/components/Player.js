@@ -60,6 +60,7 @@ let Player = React.createClass({
     document.addEventListener('keydown', this.handleKeydown);
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
+    window.focus();  // for keystrokes to work without having to click first
   },
 
   componentWillUnmount() {

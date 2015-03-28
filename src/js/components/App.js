@@ -1,7 +1,6 @@
 const React = require('react');
 const Store = require('stores/Store');
-const Player = require('./Player');
-const Slide = require('./Slide');
+const Slideshow = require('./Slideshow');
 
 require('../../styles/normalize.css');
 require('../../styles/main.scss');
@@ -32,22 +31,12 @@ var App = React.createClass({
   },
 
   render() {
-    let {currentSlide} = this.state;
 
-    return <div className='App'>
-      <Player currentSlide={currentSlide}>
-
-        <Slide className="title">
-          <h1>Interactive Datavis with React</h1>
-          <h2>Taming the Complexity of the Changing State</h2>
-        </Slide>
-
-
-        <Slide>world</Slide>
-
-
-      </Player>
-    </div>;
+    return (
+      <div className='App'>
+        <Slideshow {...this.state}/>
+      </div>
+    );
 
 
   }
