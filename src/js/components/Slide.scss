@@ -3,7 +3,6 @@
 .Slide {
   @include position(absolute, 50% null null 50%);
   @include size(1024px 768px);
-  border: 1px solid #ccc;
 
   &.title {
     h1 {
