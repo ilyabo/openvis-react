@@ -1,6 +1,6 @@
 const React = require('react');
 const Store = require('stores/Store');
-const Slideshow = require('./Slideshow');
+const Player = require('./Player');
 const Slide = require('./Slide');
 
 require('../../styles/normalize.css');
@@ -35,7 +35,7 @@ var App = React.createClass({
     let {currentSlide} = this.state;
 
     return <div className='App'>
-      <Slideshow currentSlide={currentSlide}>
+      <Player currentSlide={currentSlide}>
 
         <Slide className="title">
           <h1>Interactive Datavis with React</h1>
@@ -46,7 +46,7 @@ var App = React.createClass({
         <Slide>world</Slide>
 
 
-      </Slideshow>
+      </Player>
     </div>;
 
 

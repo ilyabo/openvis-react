@@ -1,11 +1,11 @@
 @import "common";
 
-.Slideshow {
+.Player {
   position: absolute;
   @include size(100% 100%);
 }
 
-.Slideshow-current {
+.Player-current {
   position: absolute;
   bottom: 5px;
   right: 5px;

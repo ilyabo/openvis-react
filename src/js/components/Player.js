@@ -2,7 +2,7 @@ const React = require('react/addons');
 const _ = require('underscore');
 const Actions = require('actions/Actions');
 
-require('./Slideshow.scss');
+require('./Player.scss');
 
 const KEYS = _.invert({
   left: 37,
@@ -10,7 +10,7 @@ const KEYS = _.invert({
   space: 32
 });
 
-let Slideshow = React.createClass({
+let Player = React.createClass({
 
   propTypes: {
     currentSlide: React.PropTypes.number.isRequired
@@ -24,12 +24,12 @@ let Slideshow = React.createClass({
     let {children, currentSlide} = this.props;
     let {scale} = this.state;
     return (
-      <div className="Slideshow">
+      <div className="Player">
         { children ?
             React.addons.cloneWithProps(children[currentSlide - 1], {scale: scale})
           : null
           }
-        <div className="Slideshow-current">
+        <div className="Player-current">
           {currentSlide} of {children.length}
         </div>
       </div>
@@ -71,4 +71,4 @@ let Slideshow = React.createClass({
 
 });
 
-module.exports = Slideshow;
+module.exports = Player;
