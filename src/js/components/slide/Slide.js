@@ -8,16 +8,18 @@ let Slide = React.createClass({
 
   propTypes: {
     scale: React.PropTypes.number.isRequired,
-    className: React.PropTypes.string
+    name: React.PropTypes.string
   },
 
   render() {
-    let {children, scale, className} = this.props;
+    let {children, scale, name} = this.props;
     return (
-      <div className={'Slide'+(className ? ' '+className : '')}
+      <div className={'Slide'+(name ? ' '+name : '')}
            style={{transform: 'translate(-50%, -50%) scale('+scale+')'}}>
-        <div className="Slide-content">
-          { children }
+        <div className="Slide-outer">
+          <div className="Slide-content">
+            { children }
+          </div>
         </div>
       </div>
     );

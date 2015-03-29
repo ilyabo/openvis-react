@@ -47,12 +47,12 @@ let Player = React.createClass({
     let {children, currentSlide} = this.props;
     switch (KEYS[event.which]) {
       case 'left':
-        if (currentSlide > 1) Actions.prev();
+        if (currentSlide > 1) Actions.prev(); else Actions.jumpTo(children.length);
         break;
 
       case 'right':
       case 'space':
-        if (currentSlide < children.length) Actions.next();
+        if (currentSlide < children.length) Actions.next(); else Actions.jumpTo(1);
         break;
     }
   },

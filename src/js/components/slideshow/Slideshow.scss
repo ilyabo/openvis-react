@@ -1,3 +1,74 @@
+@import "../common";
+
 .Slideshow {
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  li {
+    margin: 0.5em 0em;
+  }
+
+  h1, h2, h3
+  {
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    padding: 40px;
+  }
+
+  p.quote {
+    padding: 50px;
+    font-style: italic;
+  }
+
+  p.center {
+    text-align: center;
+  }
+
+  .Slide {
+    &.title {
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0em;
+      }
+      hr {
+        margin: 10px 0;
+        border-color: $color-text-darker;
+      }
+      h2 {
+        margin: 20px 0;
+        font-size: 1rem;
+        color: $color-text-darker;
+        text-transform: uppercase;
+      }
+    }
+  
+  
+    &.civil-war {
+      .Figure {
+        margin-top: 20px;
+        height: 720px;
+        overflow-y: scroll;
+        img {
+          width: 900px;
+        }
+      }
+    }
+
+
+    &.big-data {
+      h1 { font-size: 3.5rem; }
+    }
+  }
 
 }

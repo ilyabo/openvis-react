@@ -3,28 +3,23 @@
 .Slide {
   @include position(absolute, 50% null null 50%);
   @include size(1024px 768px);
+  border: 1px solid crimson;
 
-  &.title {
-    h1 {
-      white-space: nowrap;
-      font-size: 2rem;
-      margin-bottom: 0em;
-    }
-    hr {
-      margin: 10px 0;
-      border-color: $color-text-darker;
-    }
-    h2 {
-      margin: 20px 0;
-      font-size: 1rem;
-      color: $color-text-darker;
-      text-transform: uppercase;
-    }
+  h1 {
+    font-size: 2rem;
+    width: 100%;
   }
 }
 
-.Slide-content {
+.Slide-outer {
   @include position(absolute, 50% null null 50%);
   transform: translate(-50%, -50%);
+  @include size(100% auto);
   text-align: center;
+}
+
+.Slide-content {
+  @include size(auto auto);
+  display: inline-block;
+  text-align: left;
 }
