@@ -171,17 +171,6 @@ let Slideshow = React.createClass({
           </Slide>
 
 
-          <Slide>
-            <p className="center">
-            {'\u2a0d'}: DATA + STATE  {'\u2192'} rendered app
-            </p>
-          </Slide>
-
-          <Slide>
-            <p className="center">
-            {'\u2a0d'}: APP STATE  {'\u2192'} rendered app
-            </p>
-          </Slide>
 
           <Slide>
             <p className="center">
@@ -190,36 +179,29 @@ let Slideshow = React.createClass({
           </Slide>
 
 
-          <Slide>
-            <p className="center">
-              <table>
-                <tr>
-                  <td>{'\u2a0d'}:</td>
-                  <td>DATA</td>
-                  <td>{'\u2192'}</td>
-                  <td>DOM objects</td>
-                </tr>
-                <tr>
-                  <td>{'\u2a0d'}:</td>
-                  <td>APP STATE</td>
-                  <td>{'\u2192'}</td>
-                  <td>DOM objects</td>
-                </tr>
-              </table>
-            </p>
-          </Slide>
-
 
 
           <Slide>
             <h2>{'Could this fly?'}</h2>
             <Figure name="app-state.svg"/>
+          </Slide>
 
+
+          <Slide>
+            <p className="center">
+            Yes, but...
+            </p>
           </Slide>
 
           <Slide>
             <p className="center">
-            Full render on each state change
+            full render on each state change
+            </p>
+          </Slide>
+
+          <Slide>
+            <p className="center">
+            {'Maybe there is a trick?'}
             </p>
           </Slide>
 
