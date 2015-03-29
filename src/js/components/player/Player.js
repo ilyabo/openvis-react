@@ -25,9 +25,14 @@ let Player = React.createClass({
     let {scale} = this.state;
     return (
       <div className="Player">
-        { children ?
-            React.addons.cloneWithProps(children[currentSlide - 1], {scale: scale})
-          : null
+        { !children ? null :
+          <React.addons.TransitionGroup transitionName="slide" component="div">
+            { React.addons.cloneWithProps(children[currentSlide - 1],
+              {
+                key: currentSlide,   // ensure that a new element is created each time
+                scale: scale
+              }) }
+          </React.addons.TransitionGroup>
           }
         <div className="Player-current">
           {currentSlide} of {children.length}
