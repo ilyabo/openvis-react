@@ -29,7 +29,9 @@ let Player = React.createClass({
           <React.addons.TransitionGroup transitionName="slide" component="div">
             { React.addons.cloneWithProps(children[currentSlide - 1],
               {
-                key: currentSlide,   // ensure that a new element is created each time
+                key: currentSlide,   // to ensure that a new element is created each time so that
+                                     // componentWillEnter and componentWillLeave are triggered on
+                                     // each slide change
                 scale: scale
               }) }
           </React.addons.TransitionGroup>
