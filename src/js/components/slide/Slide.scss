@@ -1,4 +1,4 @@
-@import "common";
+@import "../common";
 
 .Slide {
   @include position(absolute, 50% null null 50%);
@@ -8,9 +8,17 @@
     h1 {
       white-space: nowrap;
       font-size: 2rem;
+      margin-bottom: 0em;
+    }
+    hr {
+      margin: 10px 0;
+      border-color: $color-text-darker;
     }
     h2 {
+      margin: 20px 0;
       font-size: 1rem;
+      color: $color-text-darker;
+      text-transform: uppercase;
     }
   }
 }

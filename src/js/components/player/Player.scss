@@ -1,4 +1,4 @@
-@import "common";
+@import "../common";
 
 .Player {
   position: absolute;
@@ -10,4 +10,6 @@
   bottom: 5px;
   right: 5px;
   font-size: 0.5rem;
+  color: $color-text-darker;
+  padding: 4px;
 }

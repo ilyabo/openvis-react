@@ -1,9 +1,9 @@
 const React = require('react');
 const Store = require('stores/Store');
-const Slideshow = require('./Slideshow');
+const Slideshow = require('./../slideshow/Slideshow');
 
-require('../../styles/normalize.css');
-require('../../styles/main.scss');
+require('../../../styles/normalize.css');
+require('../../../styles/main.scss');
 require('./App.scss');
 
 

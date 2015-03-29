@@ -1,11 +1,11 @@
-@import "common";
+@import "../common";
 
 .App {
   @include position(absolute, 0px null null 0px);
   @include size(100% 100%);
   font-family: Asap, Arial, sans-serif;
   background-color: $color-background;
-  color: white;
+  color: $color-text;
 }
 
 .App-header {
