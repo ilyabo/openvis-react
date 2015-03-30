@@ -3,7 +3,7 @@
 .Slide {
   @include position(absolute, 50% null null 50%);
   @include size(1024px 768px);
-  border: 1px solid crimson;
+//  border: 1px solid crimson;
 
   h1 {
     font-size: 2rem;

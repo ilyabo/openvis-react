@@ -22,8 +22,20 @@
     margin-bottom: 0.5rem;
   }
 
+  h3 {
+    font-size: 1rem;
+  }
+
+  code {
+    font-size: 0.9rem;
+  }
+
   p {
     padding: 40px;
+  }
+
+  p.smaller {
+    font-size: 0.8rem;
   }
 
   p.quote {

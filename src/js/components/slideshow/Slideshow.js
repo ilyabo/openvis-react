@@ -2,7 +2,10 @@ const React = require('react');
 const Player = require('./../player/Player');
 const Slide = require('./../slide/Slide');
 const Figure = require('./figure/Figure');
+const Highlight = require('react-highlight');
 
+
+require('../../../../node_modules/highlight.js/styles/github.css');
 require('./Slideshow.scss');
 
 let Slideshow = React.createClass({
@@ -143,16 +146,22 @@ let Slideshow = React.createClass({
               <li>Models are designed for views</li>
               <li>State is scattered and redundant</li>
               <li>Many dependencies</li>
-              <li>Hard to reason about state transitions
-              </li>
+              <li>Hard to reason about state transitions</li>
+             {
+            //=>
+            //   <li>Inconsistent state</li>
+            //   <li>Requires lots of debugging</li>
+            // Partial updates and mutable state stored in the DOM also contribute to the complexity often leading to inconsistent representations of the application state.
+             }
             </ul>
           </Slide>
+
 
 
           <Slide>
             <h1>Better</h1>
             <ol>
-              <li>Model the whole app state</li>
+              <li>Get the app state right</li>
               <li>Define how any state is rendered</li>
             </ol>
 
@@ -183,10 +192,11 @@ let Slideshow = React.createClass({
 
           <Slide>
             <p className="center">
-            <div>{'\u2a0d'}: APP STATE 1 {'\u2192'} DOM objects</div>
-            <div>{'\u2a0d'}: APP STATE 2 {'\u2192'} DOM objects</div>
-            <div>{'\u2a0d'}: APP STATE 3 {'\u2192'} DOM objects</div>
-            <div>...</div>
+              <div>{'\u2a0d'}: APP STATE 1 {'\u2192'} DOM objects</div>
+              <div>{'\u2a0d'}: APP STATE 2 {'\u2192'} DOM objects</div>
+              <div>{'\u2a0d'}: APP STATE 3 {'\u2192'} DOM objects</div>
+              <div>...</div>
+              <div> t {'\u2193'}</div>
             </p>
           </Slide>
 
@@ -194,16 +204,11 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <h2>{'Could this fly?'}</h2>
-            <Figure name="app-state.svg"/>
+            <Figure name="app-state.svg"  // So can this work?
+                   />
+            <p className="smaller center">{'Why haven\'t we always being doing this so far?'}</p>
           </Slide>
 
-
-          <Slide>
-            <p className="center">
-            Yes, but...
-            </p>
-          </Slide>
 
           <Slide>
             <p className="center">
@@ -212,21 +217,33 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <p className="center">
-            {'Maybe there is a trick?'}
-            </p>
+            <Figure name="react.png"/>
           </Slide>
-
 
           <Slide>
-            <code>
-            {"React.render(React.DOM.h1({id: 'Hello'}, 'Hello World'), document.body);"}
-            </code>
+            <Figure name="virtual-dom-1.svg"/>
           </Slide>
+
+          <Slide>
+            <Figure name="react-diff.svg"/>
+          </Slide>
+
+          <Slide>
+            <Highlight>
+            { require('raw!../../../snippets/hello/hello.jsx') }
+            </Highlight>
+          </Slide>
+
+
 
         </Player>
       </div>
     );
+          //<Slide>
+          //  <code>
+          //  {"React.render(React.DOM.h1({id: 'Hello'}, 'Hello World'), document.body);"}
+          //  </code>
+          //</Slide>
 
     //<Slide name="big-data">
     //  <h1>BIG DATA</h1>
