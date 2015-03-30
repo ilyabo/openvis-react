@@ -122,7 +122,8 @@ let Slideshow = React.createClass({
             <h1>Towards Reusable Charts</h1>
             <ul>
               <li>{'Component model?'}</li>
-              <li>{'Event system?'}</li>
+              <li>{'Event system?'}</li>  { /* we still end up with too many dependencies, or full render */ }
+              <li>{'How to handle state?'}</li>  { /* it doesn't tell us, have to come up with something ad hoc */ }
             </ul>
           </Slide>
 
@@ -174,7 +175,18 @@ let Slideshow = React.createClass({
 
           <Slide>
             <p className="center">
-            {'\u2a0d'}: APP STATE  {'\u2192'} DOM objects
+            <div>{'\u2a0d'}: APP STATE  {'\u2192'} DOM objects</div>
+            </p>
+          </Slide>
+
+
+
+          <Slide>
+            <p className="center">
+            <div>{'\u2a0d'}: APP STATE 1 {'\u2192'} DOM objects</div>
+            <div>{'\u2a0d'}: APP STATE 2 {'\u2192'} DOM objects</div>
+            <div>{'\u2a0d'}: APP STATE 3 {'\u2192'} DOM objects</div>
+            <div>...</div>
             </p>
           </Slide>
 
