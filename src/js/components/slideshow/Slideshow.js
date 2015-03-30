@@ -2,10 +2,9 @@ const React = require('react');
 const Player = require('./../player/Player');
 const Slide = require('./../slide/Slide');
 const Figure = require('./figure/Figure');
-const Highlight = require('react-highlight');
+const Snippet = require('./snippet/Snippet');
 
 
-require('../../../../node_modules/highlight.js/styles/github.css');
 require('./Slideshow.scss');
 
 let Slideshow = React.createClass({
@@ -17,7 +16,9 @@ let Slideshow = React.createClass({
   render() {
     let ww1 = (
       <Slide>
-        <iframe src="interactive/ww1/index.html" width="955" height="894" style={{transform: 'scale(0.8)'}}/>
+        <iframe src="interactive/ww1/index.html"
+            width="955" height="894" style={{transform: 'scale(0.8)', border: 'none'}}
+            scrolling="no" frameborder="0"/>
       </Slide>
     );
 
@@ -229,9 +230,19 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <Highlight>
-            { require('raw!../../../snippets/hello/hello.jsx') }
-            </Highlight>
+            <Snippet title="Hello, world" path="hello/hello.js"/>
+          </Slide>
+
+          <Slide>
+            <Snippet title="JSX" path="hello/hello2.js"/>
+          </Slide>
+
+          <Slide>
+            <Snippet title="Components" path="hello/hello-component.js"/>
+          </Slide>
+
+          <Slide>
+            <Snippet title="Vis" path="scatter/scatterplot.js" font="0.75" />
           </Slide>
 
 

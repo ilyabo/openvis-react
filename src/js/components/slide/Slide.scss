@@ -3,6 +3,7 @@
 .Slide {
   @include position(absolute, 50% null null 50%);
   @include size(1024px 768px);
+  overflow: hidden;
 //  border: 1px solid crimson;
 
   h1 {
