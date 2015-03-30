@@ -1,0 +1,22 @@
+.tooltip.tooltip--map {
+  max-width: 230px;
+  padding: $space-s;
+
+  h1 {
+    font-weight: normal;
+    font-size: $font-s;
+    margin-top: $space-s;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .table-body-cell {
+    font-weight: bold;
+    color: $nzz-black;
+  }
+
+  .table-body-row:first-child {
+    border-top: none;
+  }
+}

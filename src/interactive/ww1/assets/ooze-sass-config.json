@@ -1,0 +1,10 @@
+{
+    "sass" : "sass",
+    "css"  : "css",
+    "sources" : [ "main.scss" ],
+    "includes" : [
+      "../../shared/sass",
+      "../../shared/vendor/bourbon",
+      "../../shared/vendor/pure"
+    ]
+}

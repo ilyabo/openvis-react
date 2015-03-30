@@ -1,0 +1,31 @@
+$content-height: 795px;
+
+/* Config
+----------------------------------------------- */
+
+$color-central:   $nzz-red-1;
+$color-entente:   $nzz-blue-1;
+
+// power            color            dimed color     colony color        dimed colony color
+$powers-colors: (
+  'central'         $color-central   #dec6ca         #d68a89             #f4e2e2,
+  'entente'         $color-entente   #c0d1d8         #87a3b0             #e1e8eb,
+  'neutral'         #afafaf          #efefef         #afafaf             #efefef
+);
+
+
+$transparent: rgba(255,255,255,0);
+
+
+$mini-timeline-width: 56px;
+$mini-timeline-input-width: 56px;
+$events-container-width: 260px;
+$event-detail-expanded-width: 840px;
+$event-detail-height: 358px;
+$event-detail-extras-width: 550px;
+$event-detail-photo-height: 270px;
+$event-detail-photo-width: 526px;
+$event-detail-photo-original-height: 450px;
+$event-detail-photo-original-width: 600px;
+
+$nzz-label-grey: #a5a5a5;

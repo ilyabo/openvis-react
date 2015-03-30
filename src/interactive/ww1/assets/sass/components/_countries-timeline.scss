@@ -1,0 +1,169 @@
+.countries-timeline {
+  height: 100%;
+//  overflow: hidden;
+  position: relative;
+}
+
+.countries-timeline__item {
+  @include transition(opacity, 0.25s 0);
+  position: absolute;
+
+  @each $p in $powers-colors {
+    $name: nth($p, 1);
+    $color: nth($p, 2);
+    &.power--#{$name} {
+      background-color: $color;
+    }
+  }
+
+  &.is-colony {
+    @each $p in $powers-colors {
+      $name: nth($p, 1);
+      $color: nth($p, 3);
+      &.power--#{$name} {
+        background-color: $color;
+      }
+    }
+  }
+
+
+  &.is-unhighlighted,
+  &.is-unhighlighted.is-colony {
+    background-color: $nzz-light-grey;
+    opacity: 1;
+  }
+  &.is-highlighted {
+  }
+}
+
+.countries-timeline__event-date {
+  @include transition(top, 0.25s 0);
+  @include position(absolute, 0 0 0 0px);
+  background-color: $nzz-white;
+  padding: 1px 0px;
+  font-size: $font-xs;
+  margin-top: -15px;
+}
+
+.countries-timeline__event-date-marker {
+  @include transition(top, 0.25s 0);
+  @include position(absolute, 0 0 0 0px);
+  border-top: 1px dotted transparentize($nzz-mid-grey, 0.7);
+  width: 100%;
+  height: 1px;
+}
+
+.countries-timeline__event-date-marker-triangle {
+  @include transition(top, 0.25s 0);
+  @include position(absolute, 0 0 0 -10px);
+  margin-top: -3px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 3px 0 3px 6px;
+  border-color: $transparent $transparent $transparent #000000;
+}
+
+
+
+.countries-timeline__country_name {
+  @include transition(top, 0.25s 0);
+  &.power--central {
+    @include position(absolute, 0 0 0 0px);
+  }
+  &.power--entente {
+    @include position(absolute, 0 0px 0 0);
+  }
+}
+
+.countries-timeline__country_name__text {
+  position: relative;
+  background-color: $nzz-white;
+  font-size: $font-xs;
+  .power--central & {
+    padding-right: $space-x;
+  }
+  .power--entente & {
+    padding-left: $space-x;
+  }
+}
+
+.countries-timeline__country_name__text__army-size {
+  @include position(absolute, 0 0 0 0);
+  background-color: $nzz-white;
+  font-style: italic;
+  font-size: $font-xs;
+  top: 13px;
+  .power--central & {
+    left: 0px;
+  }
+  .power--entente & {
+    right: 0px;
+  }
+  white-space: nowrap;
+}
+
+.countries-timeline__country_name__text__start-date {
+  @include position(absolute, 0 0 0 0);
+  background-color: $nzz-white;
+  font-size: $font-xs;
+  top: 26px;
+  color: $nzz-mid-grey;
+  opacity: 0.5;
+  white-space: nowrap;
+  .power--central & {
+    left: 0px;
+  }
+  .power--entente & {
+    right: 0px;
+  }
+}
+
+.countries-timeline__country_name__guide {
+  @include position(absolute, 50% 0 0 0);
+  .power--central & {
+    left: 0px;
+  }
+  .power--entente & {
+    right: 0px;
+  }
+  @each $p in $powers-colors {
+    $name: nth($p, 1);
+    $color: nth($p, 4);
+    .power--#{$name} & {
+      background-color: $color;
+    }
+  }
+  height: 1px;
+}
+
+.countries-timeline__country_name__dot {
+  @include position(absolute, 50% 0 0 0);
+  border-radius: 50%;
+  margin-top: -1px;
+  width: 3px;
+  height: 3px;
+  @each $p in $powers-colors {
+    $name: nth($p, 1);
+    $color: nth($p, 4);
+    .power--#{$name} & {
+      background-color: $color;
+    }
+  }
+}
+
+
+.countries-timeline__year-tick {
+  @include transition(top, 0.25s 0);
+  @include position(absolute, 0 0 0 0px);
+  border-top: 1px solid $nzz-light-grey;
+  color: $nzz-label-grey;
+  font-size: $font-xs;
+  text-align: center;
+  width: 100%;
+  padding-right: 1px;  // to adjust the text centering
+  &:first-child {
+    border-top: none;
+  }
+}
+

@@ -1,0 +1,43 @@
+.supplement-list-item {
+  @include transition(background-color 0.25s 0s);
+  background-color: $nzz-white;
+  border-top: 1px solid $nzz-light-grey;
+  padding: $space-x $space-s;
+  width: $events-container-width - 10;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  &.is-selected {
+    padding-top: $space-s;
+    .supplement-list-item__title {
+      font-weight: bold;
+    }
+    &:hover {
+      background-color: $nzz-white;
+    }
+  }
+  cursor: pointer;
+}
+
+.supplement-list-item__icon {
+  float: left;
+  margin-right: $space-x;
+}
+.supplement-list-item__title {
+  margin-top: 3px;
+}
+
+.supplement-list-item .supplement-icon {
+
+}
+
+.supplement-list-item__close-icon {
+  @include transition(color 0.5s 0s);
+  @include position(relative, $space-x 0 0 9px);
+  color: $nzz-mid-grey;
+  float: right;
+  font-size: $font-xs;
+  .supplement-list-item:hover & {
+    color: $nzz-black;
+  }
+}

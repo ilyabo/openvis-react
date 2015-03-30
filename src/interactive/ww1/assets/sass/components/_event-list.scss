@@ -1,0 +1,65 @@
+.event-list {
+  @include position(absolute, 0px 0 0 $mini-timeline-width);
+  height: 100%;
+
+  &.has-selected-event {
+    width: $event-detail-expanded-width;
+  }
+}
+
+.event-list__scroll-pane {
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.event-list__scroll-content {
+  position: relative;
+  padding-left: 30px;
+}
+
+.event-list__year-group {
+  margin-top: $space-m;
+}
+
+.event-list__year-group__title {
+  font-weight: bold;
+  color: $nzz-black;
+  padding: $space-s $space-s;
+}
+
+.events-list__nav {
+  @include position(absolute, 0 0 $event-detail-height -6px);
+
+  .events-list__nav__button {
+    @include transition(color 0.5s 0s);
+    position: absolute;
+    cursor: pointer;
+    font-size: $font-m;
+    color: $nzz-mid-grey;
+    padding: 25px 12px;
+
+    &:hover {
+      color: $nzz-black;
+    }
+
+    &.events-list__nav__button__prev {
+      top: -60px;
+      padding-top: 30px;
+      padding-bottom: 120px;
+      .event-list-item.is-first & {
+        color: $nzz-light-grey;
+      }
+    }
+    &.events-list__nav__button__next {
+      top: $event-detail-height - 200;
+      padding-top: 145px;
+      padding-bottom: 42px;
+      .event-list-item.is-last & {
+        color: $nzz-light-grey;
+      }
+    }
+
+//  background: $nzz-light-grey;
+  }
+
+}

@@ -1,0 +1,138 @@
+.map-view {
+
+  height: 100%;
+
+  * {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+
+    &:active {
+      cursor: -webkit-grabbing;
+      cursor: -moz-grabbing;
+      cursor: grabbing;
+    }
+  }
+  &.event-is-highlighted {
+    * {
+      &, &:active {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .front-lines {
+    path {
+      fill: none;
+      stroke-linecap: round;
+    }
+    path.stroke {
+      stroke: #fff;
+      stroke-width: 5px;
+    }
+    path.fill {
+      stroke: #E8B449;
+      stroke-width: 3px;
+    }
+  }
+
+  .globe {
+    @include transition(stroke, 0.5s 0s);
+    stroke: #afafaf;
+    stroke-width: 1px;
+    fill: #fff;
+  }
+
+  .country {
+    @include transition(fill, 0.5s 0s);
+    fill: #afafaf;
+    stroke: #fff;
+    stroke-width: 1px;
+    &.no-stroke {
+      stroke: none;
+    }
+
+    @each $p in $powers-colors {
+      $name: nth($p, 1);
+      $color: nth($p, 2);
+      $colony-color: nth($p, 4);
+      &.#{$name} {
+        fill: $color;
+
+        &.colony {
+          fill: $colony-color;
+        }
+      }
+    }
+  }
+}
+.map-view.event-is-selected {
+  .globe {
+    stroke: #efefef;
+  }
+
+  .country {
+    @each $p in $powers-colors {
+      $name: nth($p, 1);
+      $color: nth($p, 2);
+      $dimed-color: nth($p, 3);
+      $colony-color: nth($p, 4);
+      $dimed-colony-color: nth($p, 5);
+      &.#{$name} {
+        fill: $dimed-color;
+
+        &.is-involved {
+          fill: $color;
+        }
+        &.colony {
+          fill: $dimed-colony-color;
+          &.is-involved {
+            fill: $colony-color;
+          }
+        }
+      }
+    }
+  }
+
+  .labels-layer text {
+    opacity: 0.2;
+    &.is-involved {
+      opacity: 1;
+    }
+  }
+  .location {
+    opacity: 0.2;
+    &.is-selected {
+      opacity: 1;
+    }
+  }
+}
+
+.map-view {
+  
+  .location {
+    fill: $nzz-mid-grey;
+    stroke: $nzz-light-grey;
+    stroke-width: 1px;
+
+    &.is-selected, 
+    &.is-highlighted {
+      fill: $nzz-dark-grey;
+    }
+  }
+
+  .labels-layer text {
+    text-transform: uppercase;
+
+    font-size: 11px;
+    font-weight: normal;
+    &.stroke {
+      fill: none;
+      stroke: rgba(255,255,255,0.1);
+      stroke-width: 2px;
+    }
+    &.fill {
+      fill: $nzz-black;
+    }
+  }
+}
