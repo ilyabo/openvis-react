@@ -330,6 +330,11 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
+            <h2>David Nolen's Todo MVC test</h2>
+            <Figure name="om-vs-backbone.png" height={700}/>
+          </Slide>
+
+          <Slide>
             <Figure name="react-diff.svg"/>
           </Slide>
 
