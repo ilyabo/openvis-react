@@ -19,7 +19,7 @@ let Snippet = React.createClass({
 
   getDefaultProps() {
     return {
-      font: 0.9
+      font: 0.8
     }
   },
 

@@ -1,0 +1,1 @@
+A variation of [this map](http://bl.ocks.org/herrstucki/9204795). The `SwissMap` component gets passed a `url` property with which it attempts to load the map data. When the loading callback fires it updates its state and gets re-rendered. Reload the page if the loading fails (the URL has a 30 % chance to be invalid).

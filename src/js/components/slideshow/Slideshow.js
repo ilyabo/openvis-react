@@ -35,6 +35,10 @@ let Slideshow = React.createClass({
           </Slide>
 
 
+          <Slide>
+            <h2>Interactive Things</h2>
+            <Figure name="jeremy-and-peter.png" width={950} />
+          </Slide>
 
           <Slide name="self-intro">
             <p className="center">
@@ -58,8 +62,8 @@ let Slideshow = React.createClass({
                 'past/berlin/dot-map.png',
                 'past/summerseries/sbb.png',
                 'past/plot_input_data__zoomed.png',
-                'past/birdeye-graphs-4.png',
-                'past/summerseries/verkehr.png',
+                //'past/birdeye-graphs-4.png',
+                //'past/summerseries/verkehr.png',
                 'past/aiddata2.png',
                 'past/flowstrates-totals-in-maps4.png',
                 //'past/summerseries/anthems.png',
@@ -90,11 +94,6 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <h2>Interactive Things</h2>
-            <Figure name="jeremy-and-peter.png" width={950} />
-          </Slide>
-
-          <Slide>
             <Figure name="rock-art.jpg" />
           </Slide>
 
@@ -105,19 +104,38 @@ let Slideshow = React.createClass({
 
 
 
-          <Slide>
+          <Slide name="_interactivity">
             <h1>{'Why interactivity?'}</h1>
-            <ul>
-              <li>Allow to explore (large) datasets</li>
-              <li>Show one facet of data at a time</li>
-              <li>Tell a personal story</li>
-              <li>Engage the audience</li>
-            </ul>
+              <ul>
+                <li>Facets</li>
+                <li>Exploration</li>
+                <li>Personal stories</li>
+                <li>Engage</li>
+              </ul>
           </Slide>
 
           <Slide>
-            <Figure name="past/comp-browser.gif" />
+            <h1>It's hard</h1>
+            <Figure name="past/comp-browser.gif" height={450} />
           </Slide>
+
+          <Slide>
+            <h1>{'Why is it hard?'}</h1>
+            <Figure name="state-transitions.svg" />
+          { /*
+             we have to model the state transitions between all pairs of states
+
+             when the state changes we  need to update the visual
+             representation differently depending on what the previous state was
+           */}
+          </Slide>
+
+          <Slide>
+            <h1>{'Really?'}</h1>
+            <Figure name="state-transitions.svg" />
+          </Slide>
+
+
 
 
           {
@@ -140,11 +158,14 @@ let Slideshow = React.createClass({
             </p>
           </Slide>
 
-          <Slide>
-            <p className="center">
-            {'\u2a0d'}: DATA  {'\u2192'} geom objects
-            </p>
-          </Slide>
+        {
+
+          //<Slide>
+          //  <p className="center">
+          //  {'\u2a0d'}: DATA  {'\u2192'} geom objects
+          //  </p>
+          //</Slide>
+          }
 
           <Slide>
             <p className="center">
@@ -159,24 +180,27 @@ let Slideshow = React.createClass({
           </Slide>
 
 
-          <Slide>
-            <p className="center">
-              D3 is fantastic
-            </p>
-          </Slide>
+        {
+          //<Slide>
+          //  <p className="center">
+          //    D3 is fantastic
+          //  </p>
+          //</Slide>
+          //
+          //<Slide>
+          //  <p className="center">
+          //    D3 has great support for interaction
+          //  </p>
+          //</Slide>
+          }
 
-          <Slide>
-            <p className="center">
-              D3 has great support for interaction
-            </p>
-          </Slide>
-
-
-          <Slide>
-            <p className="center">
-              Works great for small projects
-            </p>
-          </Slide>
+         {
+          //<Slide>
+          //  <p className="center">
+          //    Works great for small projects
+          //  </p>
+          //</Slide>
+          }
 
           <Slide>
             <p className="center">
@@ -195,6 +219,12 @@ let Slideshow = React.createClass({
               <li>{'How to handle state?'}</li>  { /* it doesn't tell us, have to come up with something ad hoc */ }
             </ul>
           </Slide>
+
+
+          <Slide>
+            <Figure name="component-dependencies.svg" />
+          </Slide>
+
 
 
           <Slide>
@@ -316,7 +346,7 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <Snippet title="Vis" path="scatter/scatterplot.js" font="0.75" />
+            <Snippet title="Vis" path="scatter/scatterplot.js" font="0.65" />
           </Slide>
 
           <Slide>
@@ -334,7 +364,7 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <Snippet title="Slippy vector tile map" path="choropleth/choropleth.js" font="0.75" />
+            <Snippet title="Animated CSS transition" path="choropleth/choropleth.js" font="0.75" />
           </Slide>
 
           <Slide>
@@ -344,6 +374,15 @@ let Slideshow = React.createClass({
           <Slide>
             <Snippet title="Animated enter/exit" path="choropleth/choropleth.js" font="0.75" />
           </Slide>
+
+
+          <Slide>
+            {
+             //immutability + shouldComponentUpdate  slippy map
+            }
+            <Snippet title="Slippy vector tile map" path="choropleth/choropleth.js" font="0.75" />
+          </Slide>
+
 
 
         {
@@ -377,6 +416,18 @@ let Slideshow = React.createClass({
           //<Slide>
           //  <h1>Flux</h1>
           //  <Figure name="flux.svg"/>
+          //</Slide>
+
+
+
+
+
+          //<Slide>
+          //server-side-rendering.js    + isomorphic
+          //</Slide>
+
+          //<Slide>
+          // responsive
           //</Slide>
 
           }
