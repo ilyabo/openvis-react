@@ -1,6 +1,7 @@
 @import "../common";
 
 .App {
+  @include disable-selection;
   @include position(absolute, 0px null null 0px);
   @include size(100% 100%);
   font-family: Asap, Arial, sans-serif;

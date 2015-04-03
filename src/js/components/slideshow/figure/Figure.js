@@ -1,25 +1,43 @@
 const React = require('react');
-const {PureRenderMixin} = require('react/addons').addons;
-
+const SCROLL_SPEED = 0.1;
 
 require('./Figure.scss');
 
 let Figure = React.createClass({
 
   propTypes: {
-    name: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string,
+    names: React.PropTypes.arrayOf(React.PropTypes.string),
     width: React.PropTypes.number,
     height: React.PropTypes.number
   },
 
-  mixins: [PureRenderMixin],
+  getInitialState() {
+    return {
+      currentIndex: 0
+    }
+  },
 
+  handleClick(ev) {
+    let {names} = this.props;
+    let {currentIndex} = this.state;
+
+    this.setState({
+      currentIndex: Math.min(names.length - 1, currentIndex + 1)
+    });
+  },
 
   render() {
-    let {name, width, height} = this.props;
+    let {names, name, width, height} = this.props;
+    let {currentIndex} = this.state;
+    if (!names && name) {
+      names = [name];
+    }
     return (
-      <div className="Figure">
-        <img src={"images/"+ name} width={width} height={height}/>
+      <div className="Figure" onClick={this.handleClick}>
+      {
+        <img src={"images/"+ names[currentIndex]} width={width} height={height}/>
+      }
       </div>
     );
   }

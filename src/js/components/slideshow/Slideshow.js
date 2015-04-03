@@ -36,6 +36,64 @@ let Slideshow = React.createClass({
 
 
 
+          <Slide name="self-intro">
+            <p className="center">
+              <div className="intro">
+                <div className="intro-innner">
+                  <div>Ilya Boyandin</div>
+                  <div className="role">Data Visualization Engineer</div>
+                  <div className="company">Teralytics</div>
+                </div>
+              </div>
+              <Figure height={550} names={[
+                'past/edge.png',
+
+                'past/ballot.png',
+                'past/Flowstrates-2012.png',
+                'past/summerseries/wald.png',
+                'past/remittances.png',
+                'past/summerseries/ch-migration.png',
+                'past/cb1.png',
+                'past/aiddata-Argentina-correlation.png',
+                'past/us-migrants-complexity-bundled.png',
+                'past/summerseries/restaurants.png',
+                'past/cgvis_onmac7.png',
+                'past/berlin/dot-map.png',
+                'past/summerseries/sbb.png',
+                'past/plot_input_data__zoomed.png',
+                'past/birdeye-graphs-4.png',
+                'past/summerseries/verkehr.png',
+                'past/aiddata2.png',
+                'past/flowstrates-totals-in-maps4-2.png',
+                //'past/summerseries/anthems.png',
+                'past/horizon3-tooltip.png',
+                'past/berlin/edge-map.png',
+                'past/summerseries/porsche.png',
+                'past/berlin/od-map_20-crop.png',
+                'past/summerseries/schweizen2.png',
+                'past/ballot2.png',
+                'past/summerseries/distanzen.jpg',
+                'past/cb2.png',
+                'past/interaction-timeline.png',
+                'past/snf.png',
+                'past/summerseries/wetter.png',
+                'past/2012-orangevaya-zaraza3-crop.png',
+                'past/trains-stations-zoom2.png',
+                'past/summerseries/strompreise.png',
+                'past/gemeinwohl.png',
+                'past/ww1.png',
+                'past/world-trade.png',
+
+                'past/edge.png'
+              ]} />
+            </p>
+          </Slide>
+
+          <Slide>
+            <h2>Interactive Things</h2>
+            <Figure name="jeremy-and-peter.png" width={950} />
+          </Slide>
+
           <Slide>
             <Figure name="rock-art.jpg" />
           </Slide>
@@ -50,14 +108,21 @@ let Slideshow = React.createClass({
           <Slide>
             <h1>{'Why interactivity?'}</h1>
             <ul>
+              <li>Allow to explore (large) datasets</li>
               <li>Show one facet of data at a time</li>
               <li>Tell a personal story</li>
               <li>Engage the audience</li>
             </ul>
           </Slide>
 
+          <Slide>
+            <Figure name="past/comp-browser.gif" />
+          </Slide>
 
-          { ww1 }
+
+          {
+            //ww1
+            }
 
           <Slide>
             <Figure name="gog.jpg" width={980}/>
@@ -202,6 +267,15 @@ let Slideshow = React.createClass({
           </Slide>
 
 
+          <Slide>
+            <p className="center">
+              <div>Important: transitions between states are simpler
+              because we don't have to model transitions between each pair of states
+              </div>
+            </p>
+          </Slide>
+
+
 
 
           <Slide>
@@ -245,7 +319,67 @@ let Slideshow = React.createClass({
             <Snippet title="Vis" path="scatter/scatterplot.js" font="0.75" />
           </Slide>
 
+          <Slide>
+            <Snippet title="React + D3" path="scatter/scatterplot-d3.js" font="0.75" />
+          </Slide>
 
+          <Slide>
+            <Snippet title="Choropleth map" path="choropleth/choropleth.js" font="0.75" />
+          </Slide>
+
+          <Slide>
+            <Snippet title="Component inner state" path="choropleth/choropleth.js" font="0.75"
+                // slider
+              />
+          </Slide>
+
+          <Slide>
+            <Snippet title="Slippy vector tile map" path="choropleth/choropleth.js" font="0.75" />
+          </Slide>
+
+          <Slide>
+            <Snippet title="Animated transition" path="choropleth/choropleth.js" font="0.75" />
+          </Slide>
+
+          <Slide>
+            <Snippet title="Animated enter/exit" path="choropleth/choropleth.js" font="0.75" />
+          </Slide>
+
+
+        {
+          //<Slide>
+          //  <h1>MVC -> Flux</h1>
+          //  Data flow in one direction
+          //    <ul>
+          //      <li>Models -> Views</li>  { /* https://speakerdeck.com/jviereck/introduction-to-flux #22 */}
+          //      <li>View -> Controller</li>
+          //      <li>Controller -> Models</li>
+          //    </ul>
+          //</Slide>
+          //
+          //<Slide>
+          //  <h1>Flux</h1>
+          //
+          //  <ul>
+          //    <li>Store: AppState + Business Logic</li>
+          //    <li>Action: Explicit update expression</li>
+          //    <li>Dispatcher:
+          //      <ul>
+          //        <li>Single action at any point in time, prevent cascading
+          //          (view A updates Store S, view B updates Store Q)</li>
+          //      </ul>
+          //    </li>
+          //    <li></li>
+          //  </ul>
+          //</Slide>
+          //
+          //
+          //<Slide>
+          //  <h1>Flux</h1>
+          //  <Figure name="flux.svg"/>
+          //</Slide>
+
+          }
 
         </Player>
       </div>

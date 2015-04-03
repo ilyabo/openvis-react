@@ -61,7 +61,31 @@
         text-transform: uppercase;
       }
     }
-  
+
+    &.self-intro {
+
+      .intro {
+        text-align: center;
+        margin-bottom: 1rem;
+        .intro-innner {
+          width: 600px;
+          text-align: left;
+          display: inline-block;
+        }
+      }
+      .Figure {
+        width: 1024px;
+        text-align: center;
+      }
+      .role {
+        font-size: 1rem;
+      }
+      .company {
+        color: $color-text-darker;
+        margin-top: 0.2em;
+        font-size: 0.9rem;
+      }
+    }
   
     &.civil-war {
       .Figure {
