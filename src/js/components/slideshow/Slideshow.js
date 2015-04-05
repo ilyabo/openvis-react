@@ -372,7 +372,7 @@ let Slideshow = React.createClass({
             <iframe src="interactive/herrstucki/anim-d3/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
-          { /* bl.ocks.org/herrstucki */ }
+            <div className="Slide-comment">bl.ocks.org/herrstucki</div>
           </Slide>
 
           <Slide>
@@ -380,6 +380,7 @@ let Slideshow = React.createClass({
             <iframe src="interactive/herrstucki/anim-react/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
+            <div className="Slide-comment">bl.ocks.org/herrstucki</div>
           </Slide>
 
 
