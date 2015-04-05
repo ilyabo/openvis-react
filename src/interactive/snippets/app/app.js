@@ -1,57 +1,3 @@
-function generatePoints(n) {
-  var nextRandom = d3.random.normal(0.5, 0.14);
-  return d3.range(n).map(function() {
-    return {
-      a: nextRandom(),
-      b: nextRandom()
-    };
-  });
-}
-
-var POINTS = generatePoints(3000);
-
-
-
-var AppState = (function() {
-  var density = 0.5, opacity = 0.5,
-      points = null;
-  
-  function updatePoints() {
-    points = POINTS.slice(0, Math.floor(density * POINTS.length));
-  }
-  updatePoints();  
-
-  return {
-    getPoints() {
-      return points;
-    },
-    getDensity() {
-      return density;
-    },
-    setDensity(newDensity) {
-      density = newDensity;
-      updatePoints();
-      renderApp();
-    },
-    getOpacity() {
-      return opacity;
-    },
-    setOpacity(newOpacity) {
-      opacity = newOpacity;
-      renderApp();
-    }
-  };
-
-})();
-
-
-// var Histogram = React.createClass({
-//   render() {
-
-//   }
-// });
-
-
 var App = React.createClass({
   render() {
     return (
@@ -75,10 +21,3 @@ var App = React.createClass({
     );
   }
 });
-
-function renderApp() {
-  React.render( <App />, document.body);
-}
-
-renderApp();
-

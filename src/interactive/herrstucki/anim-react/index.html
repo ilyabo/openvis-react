@@ -1,19 +1,5 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-body {
-  font-family: Helvetica, sans-serif;
-}
-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-.filter-btn.active {
-  font-weight: bold;
-}
-</style>
 <body>
 <script src="../../lib/d3.v3.min.js"></script>
 <script src="d3-grid.js"></script>
@@ -21,8 +7,8 @@ svg {
 <script src="../../lib/JSXTransformer-0.12.2.js"></script>
 <script type="text/jsx;harmony=true">
 
-var width = 960,
-    height = 960
+var width = 800,
+    height = 500
     TAU = Math.PI * 2;
 
 var grid = d3.layout.grid()
@@ -70,6 +56,6 @@ var Svg = React.createClass({
 
 React.render(<Svg width={width} height={height} data={grid(data)} />, document.body);
 
-d3.select(self.frameElement).style("height", height + "px");
+//d3.select(self.frameElement).style("height", height + "px");
 
 </script>

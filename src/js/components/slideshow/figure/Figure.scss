@@ -1,2 +1,6 @@
+@import "../../common";
+
 .Figure {
+  @include disable-selection;
+
 }

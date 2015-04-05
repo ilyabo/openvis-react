@@ -107,10 +107,9 @@ let Slideshow = React.createClass({
           <Slide name="_interactivity">
             <h1>{'Why interactivity?'}</h1>
               <ul>
-                <li>Facets</li>
-                <li>Exploration</li>
+                <li>Faceted exploration</li>
                 <li>Personal stories</li>
-                <li>Engage</li>
+                <li>Engaging</li>
               </ul>
           </Slide>
 
@@ -212,20 +211,24 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <h1>Towards Reusable Charts</h1>
-            <ul>
-              <li>{'Component model?'}</li>
-              <li>{'Event system?'}</li>  { /* we still end up with too many dependencies, or full render */ }
-              <li>{'How to handle state?'}</li>  { /* it doesn't tell us, have to come up with something ad hoc */ }
-            </ul>
+            <h1>D3 reusable chart</h1>
+            <table>
+              <td>
+                <ul>
+                  <li>{'Component model?'}</li>
+                  <li>{'How to handle state?'}</li>  { /* it doesn't tell us, have to come up with something ad hoc */ }
+                  <li>{'Data flow?'}</li>  { /* we still end up with too many dependencies, or full render */ }
+                </ul>
+              </td>
+              <td>
+                <Snippet name="reusable-chart" font={0.6} />
+              </td>
+            </table>
           </Slide>
-
 
           <Slide>
             <Figure name="component-dependencies.svg" />
           </Slide>
-
-
 
           <Slide>
             <h1>MVC</h1>
@@ -233,24 +236,27 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
+          {
+            //<Slide>
+            //  <h1>MVC</h1>
+            //  <ul>
+            //    <li>Models are designed for views</li>
+            //    <li>State is scattered and redundant</li>
+            //    <li>Many dependencies</li>
+            //    <li>Hard to reason about state transitions</li>
+            //   {
+            //  //=>
+            //  //   <li>Inconsistent state</li>
+            //  //   <li>Requires lots of debugging</li>
+            //  // Partial updates and mutable state stored in the DOM also contribute to the complexity often leading to inconsistent representations of the application state.
+            //   }
+            //  </ul>
+            //</Slide>
+
+            }
             <Figure name="mvc-complex.svg"/>
           </Slide>
 
-          <Slide>
-            <h1>MVC</h1>
-            <ul>
-              <li>Models are designed for views</li>
-              <li>State is scattered and redundant</li>
-              <li>Many dependencies</li>
-              <li>Hard to reason about state transitions</li>
-             {
-            //=>
-            //   <li>Inconsistent state</li>
-            //   <li>Requires lots of debugging</li>
-            // Partial updates and mutable state stored in the DOM also contribute to the complexity often leading to inconsistent representations of the application state.
-             }
-            </ul>
-          </Slide>
 
 
 
@@ -331,48 +337,46 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <h2>David Nolen's Todo MVC test</h2>
-            <Figure name="om-vs-backbone.png" height={700}/>
-          </Slide>
-
-          <Slide>
             <Figure name="react-diff.svg"/>
           </Slide>
 
           <Slide>
-            <Snippet title="Hello, world" path="hello" />
+            <Snippet title="Hello, world" name="hello" />
           </Slide>
 
           <Slide>
-            <Snippet title="JSX" path="hello2"/>
+            <Snippet title="JSX" name="hello2"/>
           </Slide>
 
           <Slide>
-            <Snippet title="Components" path="hello-component"/>
+            <Snippet title="Components" name="hello-component"/>
           </Slide>
 
           <Slide>
-            <Snippet title="Vis" path="scatterplot" font={0.65}  output={true} />
+            <Snippet title="Vis" name="scatterplot" font={0.65}  output={true} />
           </Slide>
 
           <Slide>
-            <Snippet title="React + D3" path="scatterplot-d3" font={0.7} output={true} />
+            <Snippet title="React + D3" name="scatterplot-d3" font={0.7} output={true} />
           </Slide>
 
           <Slide>
             { /* same thing could be done with d3,
                  but with react it scales to the whole app */}
-            <Snippet title="Update" path="scatterplot-update" font={0.6} output={true}  />
+            <Snippet title="Update" name="scatterplot-update" font={0.6} output={true}  />
           </Slide>
 
 
           <Slide>
+            <h3>D3 animation</h3>
             <iframe src="interactive/herrstucki/anim-d3/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
+          { /* bl.ocks.org/herrstucki */ }
           </Slide>
 
           <Slide>
+            <h3>React animation</h3>
             <iframe src="interactive/herrstucki/anim-react/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
@@ -381,41 +385,98 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <Snippet title="Animation" path="scatterplot-anim" font={0.6} output={true}  />
+            <Snippet title="Animation" name="scatterplot-anim" font={0.6} output={true}  />
           </Slide>
+
+          <Slide>
+            <Snippet title="Enter/exit transitions" name="scatterplot-anim" font={0.6} output={true}  />
+          </Slide>
+
+
+          <Slide>
+            <Snippet title="Slider" name="slider" font={0.6} output={true}  />
+          </Slide>
+
+
+          <Slide>
+            <Snippet title="Slider app" name="slider2" font={0.6} output={true}  />
+          </Slide>
+
+
+          <Slide>
+            <Snippet title="App" name="app" font={0.6} output={true}  />
+          </Slide>
+
+
+          <Slide>
+            <h1>Flux</h1>
+            <Figure name="flux.svg"/>
+          </Slide>
+
+
 
         {
           //<Slide>
-          //  <Snippet title="Choropleth map" path="choropleth/choropleth.js" font="0.75" />
+          //  <iframe src="http://interactive.swissinfo.ch/ballot-vis/"
+          //    width="800" height="900"  style={{transform: 'scale(0.8)', border: 'none'}}
+          //    scrolling="no" />
+          //</Slide>
+          }
+
+
+        {
+          //<Slide>
+          //  <Snippet title="Choropleth map" name="choropleth/choropleth.js" font="0.75" />
           //</Slide>
           //
           //<Slide>
-          //  <Snippet title="Component inner state" path="choropleth/choropleth.js" font="0.75"
+          //  <Snippet title="Component inner state" name="choropleth/choropleth.js" font="0.75"
           //      // slider
           //    />
           //</Slide>
 
         //<Slide>
-        //  <Snippet title="Animated CSS transition" path="choropleth/choropleth.js" font="0.75" />
+        //  <Snippet title="Animated CSS transition" name="choropleth/choropleth.js" font="0.75" />
         //</Slide>
         //
         //<Slide>
-        //  <Snippet title="Animated transition" path="choropleth/choropleth.js" font="0.75" />
-        //</Slide>
-        //
-        //<Slide>
-        //  <Snippet title="Animated enter/exit" path="choropleth/choropleth.js" font="0.75" />
+        //  <Snippet title="Animated transition" name="choropleth/choropleth.js" font="0.75" />
         //</Slide>
           }
 
 
           <Slide>
-            {
-             //immutability + shouldComponentUpdate  slippy map
-            }
-            <Snippet title="Slippy vector tile map" path="choropleth" font={0.75} />
+            <Snippet title="Slippy vector tile map" name="choropleth" font={0.75} />
           </Slide>
 
+
+          <Slide>
+            <Snippet name="should-component-update" />
+          </Slide>
+
+          <Slide>
+          {
+            // https://facebook.github.io/react/docs/advanced-performance.html#immutable-js-to-the-rescue
+
+            //Immutable-js is a Javascript collections library written by Lee Byron, which Facebook recently open-sourced. It provides immutable persistent collections via structural sharing. Lets see what these properties mean:
+            //
+            //Immutable: once created, a collection cannot be altered at another point in time.
+            //Persistent: new collections can be created from a previous collection and a mutation such as set. The original collection is still valid after the new collection is created.
+            //Structural Sharing: new collections are created using as much of the same structure as the original collection as possible, reducing copying to a minimum to achieve space efficiency and acceptable performance. If the new collection is equal to the original, the original is often returned.
+
+            // Immutability makes tracking changes cheap; a change will always result in a new object so we only need to check if the reference to the object has changed.
+            }
+            <Snippet title="Immutable-js" name="immutable" />
+          </Slide>
+
+
+          <Slide>
+            <h3>Hot code reloading</h3>
+          </Slide>
+
+          <Slide>
+            <Snippet title="Server-side rendering" name="server-side-rendering" />
+          </Slide>
 
 
         {
@@ -446,10 +507,6 @@ let Slideshow = React.createClass({
           //</Slide>
           //
           //
-          //<Slide>
-          //  <h1>Flux</h1>
-          //  <Figure name="flux.svg"/>
-          //</Slide>
 
 
 
@@ -464,6 +521,18 @@ let Slideshow = React.createClass({
           //</Slide>
 
           }
+
+
+
+          <Slide>
+            <h3>David Nolen's Todo MVC test</h3>
+            <Figure name="om-vs-backbone.png" height={700}/>
+          </Slide>
+
+
+          <Slide>
+            @ilyabo
+          </Slide>
 
         </Player>
       </div>

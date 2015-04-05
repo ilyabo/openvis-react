@@ -5,20 +5,14 @@ body {
   font-family: Helvetica, sans-serif;
 }
 /* Slider */
-.Scatterplot {
-  border: 1px solid #666;
-}
-.Scatterplot circle {
-  fill: #3E6E9C;
-}
 .Slider {
-  display: block;
+  display: inline-block;
   background: white;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   margin-top: 3px;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
   cursor: ew-resize;
 }
 
@@ -68,58 +62,7 @@ body {
 <script src="../../lib/d3.v3.min.js"></script>
 <script src="../../lib/react-with-addons.js"></script>
 <script src="../../lib/JSXTransformer.js"></script>
-
 <script type="text/jsx;harmony=true">
-
-
-function generatePoints(n) {
-  var nextRandom = d3.random.normal(0.5, 0.14);
-  return d3.range(n).map(function() {
-    return {
-      a: nextRandom(),
-      b: nextRandom()
-    };
-  });
-}
-
-var POINTS = generatePoints(3000);
-
-
-
-var AppState = (function() {
-  var density = 0.5, opacity = 0.5,
-      points = null;
-
-  function updatePoints() {
-    points = POINTS.slice(0, Math.floor(density * POINTS.length));
-  }
-  updatePoints();
-
-  return {
-    getPoints() {
-      return points;
-    },
-    getDensity() {
-      return density;
-    },
-    setDensity(newDensity) {
-      density = newDensity;
-      updatePoints();
-      renderApp();
-    },
-    getOpacity() {
-      return opacity;
-    },
-    setOpacity(newOpacity) {
-      opacity = newOpacity;
-      renderApp();
-    }
-  };
-
-})();
-
-
-
 var Slider = React.createClass({
 
   props: {
@@ -137,11 +80,11 @@ var Slider = React.createClass({
         title = this.props.title;
     return (
       <svg className="Slider" width={width} height={height}>
-        <rect className="Slider-fill" 
-              width={width * value} 
+        <rect className="Slider-fill"
+              width={width * value}
               height={height} />
         <rect className="Slider-border"
-              width={width} 
+              width={width}
               height={height} />
         <text x={width/2} y={height/2}>{title+': '+Math.round(value*100)+'%'}</text>
       </svg>
@@ -164,57 +107,6 @@ var Slider = React.createClass({
 });
 
 
-var ScatterPlot = React.createClass({
-  getDefaultProps() {
-    return {
-      opacity: 0.5,
-      size: 3
-    };
-  },
-  render() {
-    var x = d3.scale.linear()
-      .domain([0, 1])
-      .range([0, this.props.width]),
-      
-    y = d3.scale.linear()
-      .domain([0, 1])
-      .range([this.props.height, 0]),
-
-    r = d3.scale.sqrt()
-      .domain([0, 1])
-      .range([0, 20]);
-
-    return (
-      <svg className="Scatterplot" 
-           width={this.props.width} height={this.props.height}>
-      { this.props.points
-          .map((d,i) => 
-            <circle key={i}
-              cx={x(d.a)} cy={y(d.b)}
-              r={this.props.size}
-              opacity={this.props.opacity}/>
-          )
-      }
-      </svg>
-    );
-  }
-});
 
 </script>
-<script type="text/jsx;harmony=true" src="app.js"></script>
-
-<script type="text/jsx;harmony=true">
-
-// var Histogram = React.createClass({
-//   render() {
-
-//   }
-// });
-
-
-function renderApp() {
-  React.render( <App />, document.body);
-}
-
-renderApp();
-</script>
+<script type="text/jsx;harmony=true" src="slider2.js"></script>

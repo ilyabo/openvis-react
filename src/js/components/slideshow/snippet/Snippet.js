@@ -11,7 +11,7 @@ let Snippet = React.createClass({
   propTypes: {
     title: React.PropTypes.string,
     font: React.PropTypes.number,
-    path: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
     output: React.PropTypes.bool
   },
 
@@ -25,7 +25,8 @@ let Snippet = React.createClass({
   },
 
   render() {
-    let {font, title, path, output} = this.props;
+    let {font, title, name, output} = this.props;
+    let width = output ? 550 : 900;
     return (
       <div className="Snippet">
         {!title ? null :
@@ -34,16 +35,16 @@ let Snippet = React.createClass({
 
         <table>
           <td>
-            <div style={{fontSize: font+'rem'}}>
+            <div style={{fontSize: font+'rem', maxWidth: width}}>
               <Highlight>
-              { require('raw!../../../../interactive/snippets/' + path + '/' + path + '.js') }
+              { require('raw!../../../../interactive/snippets/' + name + '/' + name + '.js') }
               </Highlight>
             </div>
           </td>
         {!output ? null :
           <td style={{verticalAlign:'top'}}>
             <iframe  className="Snippet-output"
-              src={'../../../../interactive/snippets/' + path + '/index.html'}
+              src={'../../../../interactive/snippets/' + name + '/index.html'}
               width="400" height="400"
               scrolling="no" />
           </td>

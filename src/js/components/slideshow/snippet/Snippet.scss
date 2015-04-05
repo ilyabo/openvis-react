@@ -1,7 +1,6 @@
 .Snippet {
   code {
     max-height: 700px;
-    max-width: 500px;
     line-height: 1.4em;
   }
 }
@@ -9,6 +8,7 @@
 .Snippet-title {
   text-align: center;
   font-size: 1rem;
+  font-weight: bold;
 }
 
 
