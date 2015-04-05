@@ -21,14 +21,18 @@ var Slider = React.createClass({
         <rect className="Slider-border"
               width={width} 
               height={height} />
-        <text x={width/2} y={height/2}>{title+': '+Math.round(value*100)+'%'}</text>
+        <text x={width/2} y={height/2}>{
+          title+': '+Math.round(value*100)+'%'
+        }</text>
       </svg>
     );
   },
 
   handleDrag() {
     var posY = d3.mouse(this.getDOMNode())[0],
-        newValue = Math.max(0, Math.min(1, posY / this.props.width));
+        newValue = Math.max(0, Math.min(1,
+          posY / this.props.width
+        ));
     this.props.onValueChange(newValue);
   },
 

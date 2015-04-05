@@ -7,6 +7,14 @@ const Snippet = require('./snippet/Snippet');
 
 require('./Slideshow.scss');
 
+
+
+let Attribution = React.createClass({
+    render() {
+      return <div className="Slide-attribution">{this.props.children}</div>
+    }
+});
+
 let Slideshow = React.createClass({
 
   propTypes: {
@@ -99,6 +107,9 @@ let Slideshow = React.createClass({
 
 
           <Slide name="civil-war">
+          {
+            // our less far ancestors had to resort to using paper
+            }
             <Figure name="history-of-civil-war.png" />
           </Slide>
 
@@ -203,7 +214,7 @@ let Slideshow = React.createClass({
 
           <Slide>
             <p className="center">
-             {'Does it scale well?'}
+             {'Does it scale?'}
             </p>
           </Slide>
 
@@ -316,8 +327,7 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <Figure name="app-state.svg"  // So can this work?
-                   />
+            <Figure name="app-state.svg"   />
             <p className="smaller center">{'Why haven\'t we always being doing this so far?'}</p>
           </Slide>
 
@@ -372,7 +382,7 @@ let Slideshow = React.createClass({
             <iframe src="interactive/herrstucki/anim-d3/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
-            <div className="Slide-attribution">bl.ocks.org/herrstucki</div>
+            <Attribution>bl.ocks.org/herrstucki</Attribution>
           </Slide>
 
           <Slide>
@@ -380,13 +390,13 @@ let Slideshow = React.createClass({
             <iframe src="interactive/herrstucki/anim-react/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
-            <div className="Slide-attribution">bl.ocks.org/herrstucki</div>
+            <Attribution>bl.ocks.org/herrstucki</Attribution>
           </Slide>
 
 
 
           <Slide>
-            <Snippet title="Animation" name="scatterplot-anim" font={0.6} output={true}  />
+            <Snippet title="React/D3 Animation" name="scatterplot-anim" font={0.6} output={true}  />
           </Slide>
 
           <Slide>
@@ -405,24 +415,33 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <Snippet title="App" name="app" font={0.6} output={true}  />
+            <Snippet title="More complex app" name="app" font={0.6} output={true}  />
           </Slide>
 
+          <Slide>
+            <Figure name="app-state.svg"/>
+          </Slide>
 
           <Slide>
             <h1>Flux</h1>
             <Figure name="flux.svg"/>
+          {
+          //    <li>Store: AppState + Business Logic</li>
+          //    <li>Action: Explicit update expression</li>
+          //    <li>Dispatcher:
+          //      <ul>
+          //        <li>Single action at any point in time, prevent cascading
+          //          (view A updates Store S, view B updates Store Q)</li>
+          //      </ul>
+          //    </li>
+            }
+          </Slide>
+
+          <Slide>
+            <h1>Relay</h1>
           </Slide>
 
 
-
-        {
-          //<Slide>
-          //  <iframe src="http://interactive.swissinfo.ch/ballot-vis/"
-          //    width="800" height="900"  style={{transform: 'scale(0.8)', border: 'none'}}
-          //    scrolling="no" />
-          //</Slide>
-          }
 
 
         {
@@ -447,7 +466,11 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <Snippet title="Slippy vector tile map" name="choropleth" font={0.75} />
+            <Snippet title="Choropleth map" name="choropleth" font={0.75} />
+          </Slide>
+
+          <Slide>
+            <Snippet title="Slippy vector tile map" name="slippy-map" font={0.75} />
           </Slide>
 
 
@@ -472,64 +495,73 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <h3>Hot code reloading</h3>
+            <Snippet title="Server-side rendering" name="server-side-rendering" />
           </Slide>
 
           <Slide>
-            <Snippet title="Server-side rendering" name="server-side-rendering" />
+            <h3>Hot code reloading</h3>
+            <Attribution>gaearon.github.io/react-hot-loader/</Attribution>
+          {
+            // works only with Webpack
+
+            // Edit the component.  React Hot Loader will keep it mounted,  ** preserving the state. ***
+
+            // Editing render logic without losing the state
+          }
           </Slide>
+
+
+          <Slide>
+            <h3>React Developer Tools</h3>
+          </Slide>
+
+
 
 
         {
           //<Slide>
-          //  <h1>MVC -> Flux</h1>
-          //  Data flow in one direction
-          //    <ul>
-          //      <li>Models -> Views</li>  { /* https://speakerdeck.com/jviereck/introduction-to-flux #22 */}
-          //      <li>View -> Controller</li>
-          //      <li>Controller -> Models</li>
-          //    </ul>
+          //  Responsiveness
+          //  <iframe src="http://interactive.swissinfo.ch/ballot-vis/"
+          //    width="800" height="900"  style={{transform: 'scale(0.8)', border: 'none'}}
+          //    scrolling="no" />
           //</Slide>
-          //
-          //<Slide>
-          //  <h1>Flux</h1>
-          //
-          //  <ul>
-          //    <li>Store: AppState + Business Logic</li>
-          //    <li>Action: Explicit update expression</li>
-          //    <li>Dispatcher:
-          //      <ul>
-          //        <li>Single action at any point in time, prevent cascading
-          //          (view A updates Store S, view B updates Store Q)</li>
-          //      </ul>
-          //    </li>
-          //    <li></li>
-          //  </ul>
-          //</Slide>
-          //
-          //
-
-
-
-
-
-          //<Slide>
-          //server-side-rendering.js    + isomorphic
-          //</Slide>
-
-          //<Slide>
-          // responsive
-          //</Slide>
-
           }
 
 
 
           <Slide>
-            <h3>David Nolen's Todo MVC test</h3>
-            <Figure name="om-vs-backbone.png" height={700}/>
+            <h3>React+Om vs Backbone</h3>
+            <Figure name="om-vs-backbone.png" height={650}/>
+            <Attribution>swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/</Attribution>
           </Slide>
 
+
+          <Slide>
+            <h2>React enables an architecture that...</h2>
+          {
+          //<ul>
+          //  <li>
+          //    <ul>
+          //      <li>component model</li>
+          //      <li>one-way data flow</li>
+          //    </ul>
+          //  </li>
+          //</ul>
+          //
+          //<h2>and</h2>
+
+            }
+            <ul>
+              <li>
+                <ul>
+                  <li>is easy to reason about</li>
+                  <li>scales to large applications</li>
+                  <li>has very good performance in most cases</li>
+                  <li>can still benefit from D3</li>
+                </ul>
+              </li>
+            </ul>
+          </Slide>
 
           <Slide>
             @ilyabo
