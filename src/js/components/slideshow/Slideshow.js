@@ -445,32 +445,21 @@ let Slideshow = React.createClass({
 
 
         {
-          //<Slide>
-          //  <Snippet title="Choropleth map" name="choropleth/choropleth.js" font="0.75" />
-          //</Slide>
-          //
-          //<Slide>
-          //  <Snippet title="Component inner state" name="choropleth/choropleth.js" font="0.75"
-          //      // slider
-          //    />
-          //</Slide>
 
         //<Slide>
         //  <Snippet title="Animated CSS transition" name="choropleth/choropleth.js" font="0.75" />
         //</Slide>
-        //
-        //<Slide>
-        //  <Snippet title="Animated transition" name="choropleth/choropleth.js" font="0.75" />
-        //</Slide>
+                //
+        //  <Slide>
+        //    <Snippet title="Choropleth map" name="choropleth" font={0.75} />
+        //  </Slide>
+
           }
 
 
-          <Slide>
-            <Snippet title="Choropleth map" name="choropleth" font={0.75} />
-          </Slide>
 
           <Slide>
-            <Snippet title="Slippy vector tile map" name="slippy-map" font={0.75} />
+            <Snippet title="Slippy map" name="slippy-map" font={0.6} />
           </Slide>
 
 
@@ -493,6 +482,10 @@ let Slideshow = React.createClass({
             <Snippet title="Immutable-js" name="immutable" />
           </Slide>
 
+
+          <Slide>
+            <h3>Server-side rendering</h3>
+          </Slide>
 
           <Slide>
             <Snippet title="Server-side rendering" name="server-side-rendering" />
@@ -556,7 +549,7 @@ let Slideshow = React.createClass({
                 <ul>
                   <li>is easy to reason about</li>
                   <li>scales to large applications</li>
-                  <li>has very good performance in most cases</li>
+                  <li>performs well when treated well</li>
                   <li>can still benefit from D3</li>
                 </ul>
               </li>

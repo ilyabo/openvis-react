@@ -41,7 +41,8 @@ var SlippyMap = React.createClass({
 
   getTransform(scale, translate) {
     let k = scale / 256, r = scale % 1 ? Number : Math.round;
-    return 'matrix3d(' + [k, 0, 0, 0, 0, k, 0, 0, 0, 0, k, 0, r(translate[0] * scale), r(translate[1] * scale), 0, 1 ] + ')';
+    return 'matrix3d(' + [k, 0, 0, 0, 0, k, 0, 0, 0, 0, k, 0,
+        r(translate[0] * scale), r(translate[1] * scale), 0, 1 ] + ')';
   },
 
   render() {
@@ -113,16 +114,6 @@ var VectorTile = React.createClass({
     return { geoms: null };
   },
 
-  shouldComponentUpdate(nextProps, nextState) {
-    var {x, y, z} = this.props;
-    var {geoms} = this.state;
-
-    return (
-      (nextState.geoms !== geoms)  ||
-      (nextProps.x !== x  ||  nextProps.y !== y  ||  nextProps.z !== z);
-    );
-  },
-
   getProjection() {
     var k = Math.pow(2, z) * 256; // size of the world in pixels
     return d3.geo.mercator()
@@ -156,7 +147,9 @@ var VectorTile = React.createClass({
     var tile = this;
     this._xhr = d3.json(this.tileUrl(), function(error, json) {
         tile.setState({
-          geoms: json.features.sort((a, b) => a.properties.sort_key - b.properties.sort_key)
+          geoms: json.features.sort((a, b) =>
+            a.properties.sort_key - b.properties.sort_key
+          )
         });
     });
   },
