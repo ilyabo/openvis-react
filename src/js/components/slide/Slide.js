@@ -7,7 +7,7 @@ require('./Slide.scss');
 let Slide = React.createClass({
 
   propTypes: {
-    scale: React.PropTypes.number.isRequired,
+    scale: React.PropTypes.number,
     name: React.PropTypes.string
   },
 

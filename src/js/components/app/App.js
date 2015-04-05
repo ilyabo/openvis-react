@@ -31,14 +31,15 @@ var App = React.createClass({
   },
 
   render() {
-
     return (
       <div className='App'>
         <Slideshow {...this.state}/>
       </div>
     );
+  },
 
-
+  componentDidUpdate() {
+    window.location.hash = Store.getCurrentSlide();
   }
 });
 

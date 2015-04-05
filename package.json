@@ -13,8 +13,7 @@
     "d3": "^3.5.5",
     "flux": "^2.0.1",
     "highlight.js": "^8.4.0",
-    "r-layout": "^0.7.0",
-    "react": "~0.12.2",
+    "react": "^0.13.0",
     "react-highlight": "^0.4.1",
     "underscore": "^1.8.1"
   },

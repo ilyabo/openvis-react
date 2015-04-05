@@ -15,11 +15,9 @@ svg {
 }
 </style>
 <body>
-<script src="../lib/d3.v3.min.js"></script>
+<script src="../../lib/d3.v3.min.js"></script>
 <script src="d3-grid.js"></script>
-<script src="../lib/react-0.12.2.min.js"></script>
-<script src="../lib/JSXTransformer-0.12.2.js"></script>
-<script type="text/jsx;harmony=true">
+<script>
 
 var width = 960,
     height = 960
@@ -43,32 +41,30 @@ var data = d3.range(5000).map(function(d) {
   }; 
 });
 
-var Svg = React.createClass({
-  getInitialState() {
-    return {
-      t: 0
-    }
-  },
+var svg = d3.select("body").append("svg")
+  .attr({
+    width: width,
+    height: height
+  })
+.append("g")
+  .attr("transform", "translate(0,0)");
 
-  update(t) {
-    this.setState({t});
-  },
+var node = svg.selectAll(".node")
+  .data(grid(data), function(d) { return d.id; });
+node.enter().append("circle")
+  .attr("class", "node")
+  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+  .attr("r", function(d) { return d.size; })
+  .attr("fill", function(d) { return color(d.color); });
 
-  componentDidMount() {
-    d3.timer(this.update);
-  },
+function update(t) {
+  node.attr("transform", function(d) {
+    var alpha = TAU / d.f * (t % d.f);
+    return "translate(" + (d.x + Math.cos(alpha) * d.r) + "," + (d.y + Math.sin(alpha) * d.r) + ")";
+  });
+}
 
-  render() {
-    return <svg width={this.props.width} height={this.props.height}>
-      {this.props.data.map((d) => {
-        var alpha = TAU / d.f * (this.state.t % d.f);
-        return <circle transform={"translate(" + (d.x + Math.cos(alpha) * d.r) + "," + (d.y + Math.sin(alpha) * d.r) + ")"} fill={color(d.color)} r={d.size} key={d.id} />
-      })}
-    </svg>;
-  }
-})
-
-React.render(<Svg width={width} height={height} data={grid(data)} />, document.body);
+d3.timer(update);
 
 d3.select(self.frameElement).style("height", height + "px");
 

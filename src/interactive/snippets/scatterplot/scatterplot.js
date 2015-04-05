@@ -15,7 +15,7 @@ var ScatterPlot = React.createClass({
               return <circle
                 cx={d.a * 400}
                 cy={400 - d.b * 400}
-                r={d.c * 20}/>
+                r={Math.sqrt(d.c) * 20}/>
             })
         }
       </svg>
@@ -23,7 +23,7 @@ var ScatterPlot = React.createClass({
   }
 });
 
-React.renderComponent(
+React.render(
   <ScatterPlot points={data} />,
-  document.getElementById('scatter-plot')
+  document.body
 );

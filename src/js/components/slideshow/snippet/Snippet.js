@@ -11,7 +11,8 @@ let Snippet = React.createClass({
   propTypes: {
     title: React.PropTypes.string,
     font: React.PropTypes.number,
-    path: React.PropTypes.string.isRequired
+    path: React.PropTypes.string.isRequired,
+    output: React.PropTypes.bool
   },
 
   mixins: [PureRenderMixin],
@@ -24,17 +25,30 @@ let Snippet = React.createClass({
   },
 
   render() {
-    let {font, title, path} = this.props;
+    let {font, title, path, output} = this.props;
     return (
       <div className="Snippet">
         {!title ? null :
           <div className="Snippet-title">{title}</div>
         }
-        <div style={{fontSize: font+'rem'}}>
-          <Highlight>
-          { require('raw!../../../../snippets/' + path) }
-          </Highlight>
-        </div>
+
+        <table>
+          <td>
+            <div style={{fontSize: font+'rem'}}>
+              <Highlight>
+              { require('raw!../../../../interactive/snippets/' + path + '/' + path + '.js') }
+              </Highlight>
+            </div>
+          </td>
+        {!output ? null :
+          <td style={{verticalAlign:'top'}}>
+            <iframe  className="Snippet-output"
+              src={'../../../../interactive/snippets/' + path + '/index.html'}
+              width="400" height="400"
+              scrolling="no" />
+          </td>
+        }
+        </table>
       </div>
     );
   }

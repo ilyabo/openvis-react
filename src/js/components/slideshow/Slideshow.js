@@ -18,7 +18,7 @@ let Slideshow = React.createClass({
       <Slide>
         <iframe src="interactive/ww1/index.html"
             width="955" height="894" style={{transform: 'scale(0.8)', border: 'none'}}
-            scrolling="no" frameborder="0"/>
+            scrolling="no" />
       </Slide>
     );
 
@@ -297,14 +297,15 @@ let Slideshow = React.createClass({
           </Slide>
 
 
-          <Slide>
-            <p className="center">
-              <div>Important: transitions between states are simpler
-              because we don't have to model transitions between each pair of states
-              </div>
-            </p>
-          </Slide>
-
+        {
+          //<Slide>
+          //  <p className="center">
+          //    <div>Important: transitions between states are simpler
+          //    because we don't have to model transitions between each pair of states
+          //    </div>
+          //  </p>
+          //</Slide>
+          }
 
 
 
@@ -339,53 +340,80 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <Snippet title="Hello, world" path="hello/hello.js"/>
+            <Snippet title="Hello, world" path="hello" />
           </Slide>
 
           <Slide>
-            <Snippet title="JSX" path="hello/hello2.js"/>
+            <Snippet title="JSX" path="hello2"/>
           </Slide>
 
           <Slide>
-            <Snippet title="Components" path="hello/hello-component.js"/>
+            <Snippet title="Components" path="hello-component"/>
           </Slide>
 
           <Slide>
-            <Snippet title="Vis" path="scatter/scatterplot.js" font="0.65" />
+            <Snippet title="Vis" path="scatterplot" font={0.65}  output={true} />
           </Slide>
 
           <Slide>
-            <Snippet title="React + D3" path="scatter/scatterplot-d3.js" font="0.75" />
+            <Snippet title="React + D3" path="scatterplot-d3" font={0.7} output={true} />
           </Slide>
 
           <Slide>
-            <Snippet title="Choropleth map" path="choropleth/choropleth.js" font="0.75" />
+            { /* same thing could be done with d3,
+                 but with react it scales to the whole app */}
+            <Snippet title="Update" path="scatterplot-update" font={0.6} output={true}  />
+          </Slide>
+
+
+          <Slide>
+            <iframe src="interactive/herrstucki/anim-d3/index.html"
+                width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
+                scrolling="no" />
           </Slide>
 
           <Slide>
-            <Snippet title="Component inner state" path="choropleth/choropleth.js" font="0.75"
-                // slider
-              />
+            <iframe src="interactive/herrstucki/anim-react/index.html"
+                width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
+                scrolling="no" />
           </Slide>
 
-          <Slide>
-            <Snippet title="Animated CSS transition" path="choropleth/choropleth.js" font="0.75" />
-          </Slide>
+
 
           <Slide>
-            <Snippet title="Animated transition" path="choropleth/choropleth.js" font="0.75" />
+            <Snippet title="Animation" path="scatterplot-anim" font={0.6} output={true}  />
           </Slide>
 
-          <Slide>
-            <Snippet title="Animated enter/exit" path="choropleth/choropleth.js" font="0.75" />
-          </Slide>
+        {
+          //<Slide>
+          //  <Snippet title="Choropleth map" path="choropleth/choropleth.js" font="0.75" />
+          //</Slide>
+          //
+          //<Slide>
+          //  <Snippet title="Component inner state" path="choropleth/choropleth.js" font="0.75"
+          //      // slider
+          //    />
+          //</Slide>
+
+        //<Slide>
+        //  <Snippet title="Animated CSS transition" path="choropleth/choropleth.js" font="0.75" />
+        //</Slide>
+        //
+        //<Slide>
+        //  <Snippet title="Animated transition" path="choropleth/choropleth.js" font="0.75" />
+        //</Slide>
+        //
+        //<Slide>
+        //  <Snippet title="Animated enter/exit" path="choropleth/choropleth.js" font="0.75" />
+        //</Slide>
+          }
 
 
           <Slide>
             {
              //immutability + shouldComponentUpdate  slippy map
             }
-            <Snippet title="Slippy vector tile map" path="choropleth/choropleth.js" font="0.75" />
+            <Snippet title="Slippy vector tile map" path="choropleth" font={0.75} />
           </Slide>
 
 

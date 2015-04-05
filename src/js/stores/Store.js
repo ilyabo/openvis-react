@@ -2,7 +2,7 @@ var AppDispatcher = require('dispatcher/AppDispatcher');
 var _ = require('underscore');
 var {EventEmitter} = require('events');
 
-var currentSlide = 1;
+var currentSlide = +window.location.hash.substr(1) || 1;
 
 
 var Store = _.extend(EventEmitter.prototype, {
