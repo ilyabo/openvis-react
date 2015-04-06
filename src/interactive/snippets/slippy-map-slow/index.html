@@ -28,7 +28,7 @@
   }
   .VectorTile .major_road { stroke: #776; }
   .VectorTile .minor_road { stroke: #ccb; }
-  .VectorTile .highway { stroke: #f39; stroke-width: 4px; }
+  .VectorTile .highway { stroke: crimson; stroke-width: 4px; }
   .VectorTile .rail { stroke: #7de; }
 
   /* prevent overscrolling */
@@ -54,7 +54,7 @@
 <script src="../../lib/d3.geo.tile.js"></script>
 <script src="../../lib/react-with-addons.js"></script>
 <script src="../../lib/JSXTransformer.js"></script>
-<script type="text/jsx;harmony=true" src="slippy-map.js"></script>
+<script type="text/jsx;harmony=true" src="slippy-map-slow.js"></script>
 <script type="text/jsx;harmony=true">
 React.render(
   <SlippyMap width={400} height={400} center={[-71.061964, 42.366665]} />,

@@ -71,15 +71,13 @@ var SlippyMap = React.createClass({
       <div className="TileMap" style={{width: width, height: height}}>
         <div className="TileMap-layer"
              style={{transform: this.getTransform(tiles.scale, tiles.translate) }}>
-          {tiles.map(d =>
-              <RasterTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
-          )}
-          {
-            tiles.map(d =>
-              <VectorTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
-            )
-          }
-        </div>
+            {tiles.map(d =>
+                <RasterTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
+            )}
+            {tiles.map(d =>
+                <VectorTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
+            )}
+            </div>
       </div>
     );
 
@@ -111,80 +109,4 @@ var RasterTile = React.createClass({
   }
 
 });
-
-
-
-
-
-var VectorTile = React.createClass({
-
-  propTypes: {
-    x: React.PropTypes.number.isRequired,
-    y: React.PropTypes.number.isRequired,
-    z: React.PropTypes.number.isRequired
-  },
-
-  getInitialState() {
-    return { geoms: null };
-  },
-
-  shouldComponentUpdate(nextProps, nextState) {
-    var {x, y, z} = this.props;
-    var {geoms} = this.state;
-
-    return (
-      (nextState.geoms !== geoms)  ||
-      (nextProps.x !== x  ||  nextProps.y !== y  ||  nextProps.z !== z)
-    );
-  },
-
-
-  getProjection() {
-    var {x, y, z} = this.props;
-    var k = Math.pow(2, z) * 256; // size of the world in pixels
-    return d3.geo.mercator()
-      .translate([k / 2 - x * 256, k / 2 - y * 256]) // [0°,0°] in pixels
-      .scale(k / 2 / Math.PI);
-  },
-
-  render() {
-    var {x, y, z} = this.props;
-
-    var tilePath = d3.geo.path()
-      .projection(this.getProjection());
-
-    return (
-      <svg className="VectorTile" width={256} height={256}
-           style={{left: x * 256, top: y * 256}}>
-        {!this.state.geoms ? null  :
-                  this.state.geoms
-                    .map(d => <path key={d.id} d={tilePath(d)}
-                                    className={d.properties.kind} />)
-        }
-      </svg>
-    )
-  },
-
-  tileUrl(x, y, z) {
-    return 'http://a.tile.openstreetmap.us/vectiles-highroad/' +
-                   this.props.z + '/' + this.props.x + '/' + this.props.y + '.json';
-  },
-
-  componentDidMount() {
-    var tile = this;
-    this._xhr = d3.json(this.tileUrl(), function(error, json) {
-        tile.setState({
-          geoms: json.features.sort((a, b) =>
-            a.properties.sort_key - b.properties.sort_key
-          )
-        });
-    });
-  },
-
-  componentWillUnmount() {
-    this._xhr.abort();
-  }
-});
-
-
 
