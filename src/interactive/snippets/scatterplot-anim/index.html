@@ -12,8 +12,8 @@ circle {
 </style>
 <body>
 <script src="../../lib/d3.v3.min.js"></script>
-<script src="../../lib/react-0.12.2.min.js"></script>
-<script src="../../lib/JSXTransformer-0.12.2.js"></script>
+<script src="../../lib/react-with-addons.js"></script>
+<script src="../../lib/JSXTransformer.js"></script>
 <script type="text/jsx;harmony=true">
 
 function generateRandomData() {
@@ -25,8 +25,21 @@ function generateRandomData() {
     };
   });
 }
-    
 </script>
 <script type="text/jsx;harmony=true" src="../scatterplot-d3/scatterplot-d3.js"></script>
 
 <script type="text/jsx;harmony=true" src="scatterplot-anim.js"></script>
+
+
+
+<script type="text/jsx;harmony=true">
+function update() {
+  React.render(
+    <ScatterPlot points={generateRandomData()} />,
+    document.body
+  );
+}
+
+update();
+setInterval(update, 1000);
+</script>

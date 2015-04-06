@@ -370,11 +370,13 @@ let Slideshow = React.createClass({
             <Snippet title="React + D3" name="scatterplot-d3" font={0.7} output={true} />
           </Slide>
 
-          <Slide>
-            { /* same thing could be done with d3,
-                 but with react it scales to the whole app */}
-            <Snippet title="Update" name="scatterplot-update" font={0.6} output={true}  />
-          </Slide>
+        {
+          //<Slide>
+          //  { /* same thing could be done with d3,
+          //       but with react it scales to the whole app */}
+          //  <Snippet title="Update" name="scatterplot-update" font={0.6} output={true}  />
+          //</Slide>
+          }
 
 
           <Slide>

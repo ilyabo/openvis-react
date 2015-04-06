@@ -7,8 +7,8 @@ var ScatterPlot = React.createClass({
     return (
       <svg width={400} height={400}>
       { this.props.points
-          .map(d => 
-            <circle
+          .map((d, i) =>
+            <circle key={i}
               data-cx={x(d.a)} data-cy={y(d.b)}
               data-r={r(d.c)}/>
           )
@@ -17,33 +17,22 @@ var ScatterPlot = React.createClass({
     );
   },
 
-  componentDidUpdate() {
+  transition(duration) {
     d3.select(this.getDOMNode())
     .selectAll('circle')
       .transition()
-      .duration(500)
+      .duration(duration)
         .attr('cx', function() { return d3.select(this).attr('data-cx') })
         .attr('cy', function() { return d3.select(this).attr('data-cy') })
         .attr('r', function() { return d3.select(this).attr('data-r') });
   },
 
+  componentDidUpdate() {
+    this.transition(500);
+  },
 
   componentDidMount() {
-    d3.select(this.getDOMNode())
-    .selectAll('circle')
-      .attr('cx', function() { return d3.select(this).attr('data-cx') })
-      .attr('cy', function() { return d3.select(this).attr('data-cy') })
-      .attr('r', function() { return d3.select(this).attr('data-r') });
+    this.transition(0);
   }
 
 });
-
-function update() {
-  React.renderComponent(
-    <ScatterPlot points={generateRandomData()} />,
-    document.body
-  );
-}
-
-update();
-setInterval(update, 1000);

@@ -1,6 +1,6 @@
 function update() {
   React.render(
-    ScatterPlot({ points: generateRandomData() }),
+    <ScatterPlot points={generateRandomData()} />,
     document.body
   );
 }
