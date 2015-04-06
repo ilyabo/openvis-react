@@ -351,32 +351,29 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <Snippet title="Hello, world" name="hello" />
+            <Snippet title="Hello, world" name="hello" font={0.7}/>
           </Slide>
 
           <Slide>
-            <Snippet title="JSX" name="hello2"/>
+            <Snippet title="JSX" name="hello2" font={0.7}/>
           </Slide>
 
           <Slide>
-            <Snippet title="Components" name="hello-component"/>
+            <Snippet title="Components" name="hello-component"  font={0.7}/>
           </Slide>
 
           <Slide>
-            <Snippet title="Vis" name="scatterplot" font={0.65}  output={true} />
+            <Snippet title="Vis" name="scatterplot" font={0.6}  output={true} />
           </Slide>
 
           <Slide>
-            <Snippet title="React + D3" name="scatterplot-d3" font={0.7} output={true} />
+            <Snippet title="React + D3" name="scatterplot-d3" font={0.6} output={true} />
           </Slide>
 
-        {
-          //<Slide>
-          //  { /* same thing could be done with d3,
-          //       but with react it scales to the whole app */}
-          //  <Snippet title="Update" name="scatterplot-update" font={0.6} output={true}  />
-          //</Slide>
-          }
+
+          <Slide>
+            <Snippet title="Update" name="scatterplot-update" font={0.6} output={true}  />
+          </Slide>
 
 
           <Slide>
@@ -406,9 +403,8 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <h3>Anim in the works...</h3>
+            <h3>Animation support is in the works</h3>
             <Attribution>github.com/chenglou/react-tween-state</Attribution>
-            <Attribution>github.com/chenglou/react-state-stream</Attribution>
           </Slide>
 
 

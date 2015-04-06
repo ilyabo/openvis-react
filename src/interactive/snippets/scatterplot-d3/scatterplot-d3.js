@@ -15,8 +15,8 @@ var ScatterPlot = React.createClass({
     return (
       <svg width={400} height={400}>
       { this.props.points
-          .map(d => 
-            <circle
+          .map((d, i) =>
+            <circle key={i}
               cx={x(d.a)} cy={y(d.b)}
               r={r(d.c)}/>
           )
