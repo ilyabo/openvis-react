@@ -67,20 +67,3 @@ var VectorTile = React.createClass({
 });
 
 
-
-var cache = {};
-function request(url, callback) {
-  if (cache[url]) {
-    console.log('hit for ',url);
-    callback(null, cache[url]);
-    return;
-  }
-  console.log('miss for ',url);
-  return d3.json(url, function(error, json) {
-    var features = json.features.sort((a, b) =>
-      a.properties.sort_key - b.properties.sort_key
-    );
-    cache[url] = features;
-    callback(null, features)
-  });
-}

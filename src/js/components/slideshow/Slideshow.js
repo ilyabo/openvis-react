@@ -3,6 +3,7 @@ const Player = require('./../player/Player');
 const Slide = require('./../slide/Slide');
 const Figure = require('./figure/Figure');
 const Snippet = require('./snippet/Snippet');
+const SlidersAverage = require('../slider/SlidersAverage');
 
 
 require('./Slideshow.scss');
@@ -49,7 +50,7 @@ let Slideshow = React.createClass({
           <Slide name="title">
             <h1>Interactive Datavis with React</h1>
             <hr/>
-            <h2>Taming the Complexity of the Changing State</h2>
+            <h2>Taming the Complexity of the Changing State</h2>  { /* seduced by technology */}
           </Slide>
 
 
@@ -80,7 +81,7 @@ let Slideshow = React.createClass({
                 'past/berlin/dot-map.png',
                 'past/summerseries/sbb.png',
                 'past/plot_input_data__zoomed.png',
-                //'past/birdeye-graphs-4.png',
+                'past/birdeye-graphs-4.png',
                 //'past/summerseries/verkehr.png',
                 'past/aiddata2.png',
                 'past/flowstrates-totals-in-maps4.png',
@@ -413,6 +414,10 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
+            african trade
+          </Slide>
+
+          <Slide>
             <h3>in the works</h3>
             <Attribution>github.com/chenglou/react-tween-state</Attribution>
           </Slide>
@@ -511,6 +516,15 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
+            <h3>Canvas, React Native, WebGL...</h3>
+          </Slide>
+
+          <Slide>
+            <h3>React Developer Tools</h3>
+          </Slide>
+
+
+          <Slide>
             <h3>Hot code reloading</h3>
             <Attribution>gaearon.github.io/react-hot-loader/</Attribution>
           {
@@ -524,8 +538,9 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <h3>React Developer Tools</h3>
+            <SlidersAverage />
           </Slide>
+
 
 
 
@@ -568,15 +583,18 @@ let Slideshow = React.createClass({
                 <ul>
                   <li>is easy to reason about</li>
                   <li>helps to avoid incidental complexity</li>
-                  <li>scales to large applications</li>
-                  <li>performs well when treated well</li>
-                  <li>can still benefit from D3</li>
+                  <li>scales to large applications</li>   { /* by providing a great component model */ }
+                  <li>performs well when care is taken</li>
+                { /*<li>can still benefit from D3</li>*/ }
+                  <li>is fun to use</li>
                 </ul>
               </li>
             </ul>
           </Slide>
 
           <Slide>
+            github.com/ilyabo/openvis-react
+            <br/>
             @ilyabo
           </Slide>
 
