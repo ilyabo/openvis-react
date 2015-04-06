@@ -6,7 +6,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
   return (
     (nextState.geoms !== geoms)  ||
-    (nextProps.x !== x  ||  nextProps.y !== y  ||  nextProps.z !== z);
+    (nextProps.x !== x  ||  nextProps.y !== y  ||  nextProps.z !== z)
   );
 }
 

@@ -1,11 +1,18 @@
 var SlippyMap = React.createClass({
 
+  propTypes: {
+    width: React.PropTypes.number.isRequired,
+    height: React.PropTypes.number.isRequired,
+    center: React.PropTypes.array.isRequired,
+  },
+
   getInitialState() {
     return {
-      scale: (1 << 23),
+      scale: (1 << 19),
       translate: [-this.props.width / 2, -this.props.height / 2]
     };
   },
+
 
   getProjection() {
     return d3.geo.mercator()
@@ -21,8 +28,8 @@ var SlippyMap = React.createClass({
 
     var zoom = d3.behavior.zoom()
       .scale(scale)
-      .scaleExtent([1 << 18, 1 << 24])
-      .translate(projection(center.toArray()).map(x => -x))
+      .scaleExtent([1 << 18, 1 << 25])
+      .translate(projection(center).map(x => -x))
       .on('zoom', this.zoomed);
 
     var map = d3.select(this.getDOMNode())
@@ -40,31 +47,40 @@ var SlippyMap = React.createClass({
   },
 
   getTransform(scale, translate) {
-    let k = scale / 256, r = scale % 1 ? Number : Math.round;
+    var k = scale / 256, r = scale % 1 ? Number : Math.round;
     return 'matrix3d(' + [k, 0, 0, 0, 0, k, 0, 0, 0, 0, k, 0,
         r(translate[0] * scale), r(translate[1] * scale), 0, 1 ] + ')';
   },
 
   render() {
     var {width, height} = this.props;
-    var projection = this.getProjection();
+    var {scale, translate} = this.state;
 
-    var tiles = d3.geo.tile()
+    var tiler = d3.geo.tile()
         .size([width, height])
         .scale(scale)
+        .translate(translate);
+
+    var tiles = tiler();
+
+    var projection = this.getProjection();
+    projection
+        .scale(scale / 2 / Math.PI)
         .translate(translate);
 
 
     return (
       <div className="TileMap" style={{width: width, height: height}}>
         <div className="TileMap-layer"
-             style={{transform: this.getTransform(tiles.scale, tiles.translate) })}>
-          tiles.map(d =>
-            <RasterTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
-          )
-          tiles.map(d =>
-            <VectorTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
-          )
+             style={{transform: this.getTransform(tiles.scale, tiles.translate) }}>
+          {tiles.map(d =>
+              <RasterTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
+          )}
+          {
+            tiles.map(d =>
+              <VectorTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
+            )
+          }
         </div>
       </div>
     );
@@ -87,10 +103,10 @@ var RasterTile = React.createClass({
   },
 
   render() {
+    var {x, y, z} = this.props;
     return (
       <img className="RasterTile"
-           src={'http://a.www.toolserver.org/tiles/bw-mapnik/'+
-                this.props.z+'/'+this.props.x+'/'+this.props.y+'.png'}
+           src={'http://a.www.toolserver.org/tiles/bw-mapnik/'+z+'/'+x+'/'+y+'.png'}
            style={{left: x * 256, top: y * 256}}
            width={256} height={256} />
     );
@@ -114,7 +130,19 @@ var VectorTile = React.createClass({
     return { geoms: null };
   },
 
+  shouldComponentUpdate(nextProps, nextState) {
+    var {x, y, z} = this.props;
+    var {geoms} = this.state;
+
+    return (
+      (nextState.geoms !== geoms)  ||
+      (nextProps.x !== x  ||  nextProps.y !== y  ||  nextProps.z !== z)
+    );
+  },
+
+
   getProjection() {
+    var {x, y, z} = this.props;
     var k = Math.pow(2, z) * 256; // size of the world in pixels
     return d3.geo.mercator()
       .translate([k / 2 - x * 256, k / 2 - y * 256]) // [0°,0°] in pixels
@@ -128,11 +156,12 @@ var VectorTile = React.createClass({
       .projection(this.getProjection());
 
     return (
-      <svg className="VectorTile"
+      <svg className="VectorTile" width={256} height={256}
            style={{left: x * 256, top: y * 256}}>
         {!this.state.geoms ? null  :
                   this.state.geoms
-                    .map(d => <path key={d.id} d={tilePath(d)} />)
+                    .map(d => <path key={d.id} d={tilePath(d)}
+                                    className={d.properties.kind} />)
         }
       </svg>
     )
@@ -158,3 +187,6 @@ var VectorTile = React.createClass({
     this._xhr.abort();
   }
 });
+
+
+

@@ -473,7 +473,7 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <Snippet title="Slippy map" name="slippy-map" font={0.6} />
+            <Snippet title="Slippy map" name="slippy-map" font={0.6} output={true} />
           </Slide>
 
 
