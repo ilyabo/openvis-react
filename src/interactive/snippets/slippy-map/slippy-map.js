@@ -13,13 +13,6 @@ var SlippyMap = React.createClass({
     };
   },
 
-
-  getProjection() {
-    return d3.geo.mercator()
-      .scale(this.state.scale / 2 / Math.PI)
-      .translate(this.state.translate);
-  },
-
   componentDidMount() {
     var {width, height, center} = this.props;
     var {scale, translate} = this.state;
@@ -32,7 +25,7 @@ var SlippyMap = React.createClass({
       .translate(projection(center).map(x => -x))
       .on('zoom', this.zoomed);
 
-    var map = d3.select(this.getDOMNode())
+    d3.select(this.getDOMNode())
       .call(zoom);
 
     this.zoom = zoom;
@@ -46,6 +39,13 @@ var SlippyMap = React.createClass({
     });
   },
 
+
+  getProjection() {
+    return d3.geo.mercator()
+      .scale(this.state.scale / 2 / Math.PI)
+      .translate(this.state.translate);
+  },
+
   getTransform(scale, translate) {
     var k = scale / 256, r = scale % 1 ? Number : Math.round;
     return 'matrix3d(' + [k, 0, 0, 0, 0, k, 0, 0, 0, 0, k, 0,
@@ -56,6 +56,7 @@ var SlippyMap = React.createClass({
     var {width, height} = this.props;
     var {scale, translate} = this.state;
 
+    var projection = this.getProjection();
     var tiler = d3.geo.tile()
         .size([width, height])
         .scale(scale)
@@ -63,10 +64,7 @@ var SlippyMap = React.createClass({
 
     var tiles = tiler();
 
-    var projection = this.getProjection();
-    projection
-        .scale(scale / 2 / Math.PI)
-        .translate(translate);
+
 
 
     return (
