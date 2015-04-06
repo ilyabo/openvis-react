@@ -400,7 +400,13 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <Snippet title="Enter/exit transitions" name="scatterplot-anim" font={0.6} output={true}  />
+            <Snippet title="Enter/exit transitions" name="scatterplot-anim2" font={0.6} output={true}  />
+          </Slide>
+
+          <Slide>
+            <h3>Anim in the works...</h3>
+            <Attribution>github.com/chenglou/react-tween-state</Attribution>
+            <Attribution>github.com/chenglou/react-state-stream</Attribution>
           </Slide>
 
 
@@ -548,6 +554,7 @@ let Slideshow = React.createClass({
               <li>
                 <ul>
                   <li>is easy to reason about</li>
+                  <li>helps to avoid incidental complexity</li>
                   <li>scales to large applications</li>
                   <li>performs well when treated well</li>
                   <li>can still benefit from D3</li>
