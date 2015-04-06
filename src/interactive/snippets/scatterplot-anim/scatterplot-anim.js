@@ -17,22 +17,15 @@ var ScatterPlot = React.createClass({
     );
   },
 
-  transition(duration) {
+  componentDidUpdate() {
     d3.select(this.getDOMNode())
     .selectAll('circle')
       .transition()
-      .duration(duration)
+      .duration(500)
         .attr('cx', function() { return d3.select(this).attr('data-cx') })
         .attr('cy', function() { return d3.select(this).attr('data-cy') })
         .attr('r', function() { return d3.select(this).attr('data-r') });
   },
 
-  componentDidUpdate() {
-    this.transition(500);
-  },
-
-  componentDidMount() {
-    this.transition(0);
-  }
 
 });

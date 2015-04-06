@@ -23,8 +23,6 @@ var ScatterPlot = React.createClass({
   }
 });
 
-
-
 var Dot = React.createClass({
   render() {
     return <circle cx={this.props.x}
