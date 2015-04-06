@@ -15,6 +15,16 @@ let Attribution = React.createClass({
     }
 });
 
+let Columns = React.createClass({
+    render() {
+      return <div className="Columns">
+        {this.props.children.map(child =>
+          <div className="Column">{child}</div>
+        )}
+      </div>
+    }
+});
+
 let Slideshow = React.createClass({
 
   propTypes: {
@@ -223,18 +233,14 @@ let Slideshow = React.createClass({
 
           <Slide>
             <h1>D3 reusable chart</h1>
-            <table>
-              <td>
-                <ul>
-                  <li>{'Component model?'}</li>
-                  <li>{'How to handle state?'}</li>  { /* it doesn't tell us, have to come up with something ad hoc */ }
-                  <li>{'Data flow?'}</li>  { /* we still end up with too many dependencies, or full render */ }
-                </ul>
-              </td>
-              <td>
-                <Snippet name="reusable-chart" font={0.6} />
-              </td>
-            </table>
+            <Columns>
+              <Snippet name="reusable-chart" font={0.6} />
+              <ul>
+                <li>{'Component model?'}</li>
+                <li>{'How to handle state?'}</li>  { /* it doesn't tell us, have to come up with something ad hoc */ }
+                <li>{'Data flow?'}</li>  { /* we still end up with too many dependencies, or full render */ }
+              </ul>
+            </Columns>
           </Slide>
 
           <Slide>
@@ -375,6 +381,10 @@ let Slideshow = React.createClass({
             <Snippet title="Update" name="scatterplot-update" font={0.6} output={true}  />
           </Slide>
 
+          <Slide>
+            <h3>Animation</h3>
+          </Slide>
+
 
           <Slide>
             <h3>D3 animation</h3>
@@ -403,7 +413,7 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <h3>Animation support is in the works</h3>
+            <h3>in the works</h3>
             <Attribution>github.com/chenglou/react-tween-state</Attribution>
           </Slide>
 
