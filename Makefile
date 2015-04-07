@@ -14,9 +14,6 @@ server: install
 _setenv-production:
 	$(eval ENV :="production")
 
-dist: clean install
-	$(GRUNT) dist
-
 clean:
 	$(GRUNT) clean
 
