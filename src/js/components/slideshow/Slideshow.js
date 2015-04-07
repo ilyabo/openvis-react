@@ -358,6 +358,12 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
+            <p className="center">
+            full re-render is affordable
+            </p>
+          </Slide>
+
+          <Slide>
             <Snippet title="Hello, world" name="hello" font={0.7}/>
           </Slide>
 
@@ -420,12 +426,15 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            african trade
+            <h3>in the works</h3>
+            <Attribution>github.com/chenglou/react-tween-state</Attribution>
           </Slide>
 
           <Slide>
-            <h3>in the works</h3>
-            <Attribution>github.com/chenglou/react-tween-state</Attribution>
+            <iframe src="http://lab.interactivethings.com/global-trade-africa/"
+                width="955" height="700"
+                style={{transform: 'scale(1)', border: 'none', background:'white'}}
+                scrolling="no" />
           </Slide>
 
 
@@ -464,6 +473,7 @@ let Slideshow = React.createClass({
 
           <Slide>
             <h1>Relay</h1>
+            <Figure name="relay.png" height="400"/>
           </Slide>
 
 

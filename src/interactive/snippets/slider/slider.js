@@ -28,20 +28,20 @@ var Slider = React.createClass({
     );
   },
 
-  handleDrag() {
-    var posY = d3.mouse(this.getDOMNode())[0],
-        newValue = Math.max(0, Math.min(1,
-          posY / this.props.width
-        ));
-    this.props.onValueChange(newValue);
-  },
-
   componentDidMount() {
     var drag = d3.behavior.drag()
       .on('drag', this.handleDrag);
 
     d3.select(this.getDOMNode())
       .call(drag);
+  },
+
+  handleDrag() {
+    var posY = d3.mouse(this.getDOMNode())[0],
+        newValue = Math.max(0, Math.min(1,
+          posY / this.props.width
+        ));
+    this.props.onValueChange(newValue);
   }
 });
 

@@ -23,6 +23,9 @@ var App = React.createClass({
                 value={AppState.getDensity()} 
                 onValueChange={AppState.setDensity} />
 
+        <div className="Slider-value">
+          {AppState.getDensity()}
+        </div>
       </div>
     );
   }
