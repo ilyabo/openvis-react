@@ -68,49 +68,49 @@ let Slideshow = React.createClass({
                   <div className="company">Teralytics</div>
                 </div>
               </div>
-              <Figure height={550} names={[
-                'past/edge.png',
-
-                'past/Flowstrates-2012.png',
-                'past/summerseries/wald.png',
-                'past/cb1.png',
-                //'past/aiddata-Argentina-correlation.png',
-                'past/us-migrants-complexity-bundled.png',
-                'past/summerseries/restaurants.png',
-                'past/cgvis_onmac7.png',
-                'past/berlin/dot-map.png',
-                'past/summerseries/sbb.png',
-                'past/plot_input_data__zoomed.png',
-                'past/birdeye-graphs-4.png',
-                //'past/summerseries/verkehr.png',
-                'past/aiddata2.png',
-                'past/flowstrates-totals-in-maps4.png',
-                //'past/summerseries/anthems.png',
-                'past/horizon3-tooltip.png',
-                'past/berlin/edge-map.png',
-                'past/summerseries/porsche.png',
-                'past/berlin/od-map_20-crop.png',
-                'past/summerseries/schweizen2.png',
-                'past/ballot2.png',
-                'past/summerseries/distanzen.jpg',
-                'past/cb2.png',
-                'past/interaction-timeline.png',
-                'past/summerseries/ch-migration.png',
-                'past/snf.png',
-                'past/summerseries/wetter.png',
-                'past/2012-orangevaya-zaraza3-crop.png',
-                'past/trains-stations-zoom2.png',
-                'past/remittances.png',
-                'past/summerseries/strompreise.png',
-                'past/gemeinwohl.png',
-                'past/ww1.png',
-                'past/ballot.png',
-                'past/world-trade.png',
-
-                'past/edge.png'
-              ]} />
             </p>
           </Slide>
+
+          <Slide>
+            <Figure height={550} names={[
+              'past/Flowstrates-2012.png',
+              'past/summerseries/wald.png',
+              'past/cb1.png',
+              //'past/aiddata-Argentina-correlation.png',
+              'past/us-migrants-complexity-bundled.png',
+              'past/summerseries/restaurants.png',
+              'past/cgvis_onmac7.png',
+              'past/berlin/dot-map.png',
+              'past/summerseries/sbb.png',
+              'past/plot_input_data__zoomed.png',
+              'past/birdeye-graphs-4.png',
+              //'past/summerseries/verkehr.png',
+              'past/aiddata2.png',
+              'past/flowstrates-totals-in-maps4.png',
+              //'past/summerseries/anthems.png',
+              'past/horizon3-tooltip.png',
+              'past/berlin/edge-map.png',
+              'past/summerseries/porsche.png',
+              //'past/berlin/od-map_20-crop.png',
+              'past/summerseries/schweizen2.png',
+              'past/ballot2.png',
+              'past/summerseries/distanzen.jpg',
+              'past/cb2.png',
+              'past/interaction-timeline.png',
+              'past/summerseries/ch-migration.png',
+              'past/snf.png',
+              'past/summerseries/wetter.png',
+              'past/2012-orangevaya-zaraza3-crop.png',
+              'past/trains-stations-zoom2.png',
+              'past/remittances.png',
+              'past/summerseries/strompreise.png',
+              'past/gemeinwohl.png',
+              'past/ww1.png',
+              'past/ballot.png',
+              'past/world-trade.png',
+
+              'past/edge.png'
+            ]} />          </Slide>
 
           <Slide>
             <Figure name="rock-art.jpg" />
@@ -196,7 +196,7 @@ let Slideshow = React.createClass({
 
           <Slide>
             <p className="center">
-              ggplot2, Protovis, D3, Bokeh
+              ggplot, Protovis, D3, Bokeh, vega...
             </p>
           </Slide>
 
@@ -366,7 +366,7 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <Snippet title="Components" name="hello-component"  font={0.7}/>
+            <Snippet title="Components" name="hello-component"  font={0.7} output={true}/>
           </Slide>
 
           <Slide>
@@ -386,18 +386,24 @@ let Slideshow = React.createClass({
             <h3>Animation</h3>
           </Slide>
 
+        {
+          //<Slide>
+          //  <Snippet title="Animation" name="anim" font={0.6} output={false}  />
+          //</Slide>
+          }
+
 
           <Slide>
-            <h3>D3 animation</h3>
-            <iframe src="interactive/herrstucki/anim-d3/index.html"
+            <h3>React</h3>
+            <iframe src="interactive/herrstucki/anim-react/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
             <Attribution>bl.ocks.org/herrstucki</Attribution>
           </Slide>
 
           <Slide>
-            <h3>React animation</h3>
-            <iframe src="interactive/herrstucki/anim-react/index.html"
+            <h3>D3</h3>
+            <iframe src="interactive/herrstucki/anim-d3/index.html"
                 width="800" height="500"  style={{transform: 'scale(0.8)', border: 'none'}}
                 scrolling="no" />
             <Attribution>bl.ocks.org/herrstucki</Attribution>
@@ -516,7 +522,12 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            <h3>Canvas, React Native, WebGL...</h3>
+            <h3>React Canvas, React Native</h3>
+            <ul>
+              <li><Attribution>github.com/Flipboard/react-canvas</Attribution></li>
+              <li><Attribution>facebook.github.io/react-native</Attribution></li>
+              <li><Attribution>github.com/reactjs/react-art</Attribution></li>
+            </ul>
           </Slide>
 
           <Slide>
@@ -557,7 +568,6 @@ let Slideshow = React.createClass({
 
 
           <Slide>
-            <h3>React+Om vs Backbone</h3>
             <Figure name="om-vs-backbone.png" height={650}/>
             <Attribution>swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/</Attribution>
           </Slide>
@@ -582,7 +592,6 @@ let Slideshow = React.createClass({
               <li>
                 <ul>
                   <li>is easy to reason about</li>
-                  <li>helps to avoid incidental complexity</li>
                   <li>scales to large applications</li>   { /* by providing a great component model */ }
                   <li>performs well when care is taken</li>
                 { /*<li>can still benefit from D3</li>*/ }
@@ -593,9 +602,13 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-            github.com/ilyabo/openvis-react
+            <h1>Thank you!</h1>
+            <br/>
             <br/>
             @ilyabo
+            <br/>
+            <br/>
+            github.com/ilyabo/openvis-react
           </Slide>
 
         </Player>

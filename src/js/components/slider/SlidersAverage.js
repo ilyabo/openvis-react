@@ -7,42 +7,38 @@ require('./SlidersAverage.scss');
 var SlidersAverage = React.createClass({
 
   getInitialState() {
-    return {
-      apples: 0.5,
-      oranges: 0.5,
-      bananas: 0.5
-    };
+    return {};
+  },
+
+  getAverage() {
+    return d3.mean(d3.values(this.state)) || 0;
   },
 
   render() {
     return (
       <div className="SlidersAverage">
-
-        <Slider width={200} height={40}
-                title="Apples"
-                value={this.state.apples}
-                onValueChange={(v) => this.setState({apples: v})} />
-
-        <Slider width={200} height={40}
-                title="Oranges"
-                value={this.state.oranges}
-                onValueChange={(v) => this.setState({oranges: v})} />
-
-        <Slider width={200} height={40}
-                title="Bananas"
-                value={this.state.bananas}
-                onValueChange={(v) => this.setState({bananas: v})} />
-
+        {
+          d3.range(5).map(i =>
+              <Slider width={200} height={40}
+                      value={this.state[i] || 0}
+                      onValueChange={(v) => this.handleChange(i, v)} />
+            )
+        }
 
         <div className="SlidersAverage-average">
-          <span className="SlidersAverage-average-label">Average:</span>
+          <span className="SlidersAverage-average-label">Average value:</span>
           <span className="SlidersAverage-average-value">
-          { d3.mean([this.state.apples, this.state.oranges, this.state.bananas]).toFixed(2) }
+            { this.getAverage().toFixed(2) }
           </span>
         </div>
 
       </div>
     );
+  },
+
+  handleChange(i, val) {
+    var obj = {}; obj[i] = val;
+    this.setState(obj);
   }
 
 });

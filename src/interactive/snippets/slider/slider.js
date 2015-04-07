@@ -16,13 +16,13 @@ var Slider = React.createClass({
     return (
       <svg className="Slider" width={width} height={height}>
         <rect className="Slider-fill" 
-              width={width * value} 
+              width={width * value}
               height={height} />
         <rect className="Slider-border"
               width={width} 
               height={height} />
         <text x={width/2} y={height/2}>{
-          title+': '+Math.round(value*100)+'%'
+          title+': '+Math.round(value)+'%'
         }</text>
       </svg>
     );

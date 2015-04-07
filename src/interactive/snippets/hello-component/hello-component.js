@@ -12,6 +12,6 @@ var Greeting = React.createClass({
 });
 
 React.render(
-  <Greeting name="John!" />,
+  <Greeting name="John" />,
   document.body
 );

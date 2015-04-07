@@ -28,7 +28,7 @@ var Slider = React.createClass({
               width={width} 
               height={height} />
         <text x={width/2} y={height/2}>{
-          title+': '+Math.round(value*100)
+          value.toFixed(1)
         }</text>
       </svg>
     );
@@ -36,7 +36,7 @@ var Slider = React.createClass({
 
   handleDrag() {
     var posY = d3.mouse(this.getDOMNode())[0],
-        newValue = Math.max(0, Math.min(1,
+        newValue = Math.max(0, Math.min(100,
           posY / this.props.width
         ));
     this.props.onValueChange(newValue);
