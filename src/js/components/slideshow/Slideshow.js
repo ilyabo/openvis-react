@@ -33,14 +33,6 @@ let Slideshow = React.createClass({
   },
 
   render() {
-    let ww1 = (
-      <Slide>
-        <iframe src="interactive/ww1/index.html"
-            width="955" height="894" style={{transform: 'scale(0.8)', border: 'none'}}
-            scrolling="no" />
-      </Slide>
-    );
-
     return (
       <div className="Slideshow">
         <Player currentSlide={this.props.currentSlide}>
@@ -50,7 +42,7 @@ let Slideshow = React.createClass({
           <Slide name="title">
             <h1>Interactive Datavis with React</h1>
             <hr/>
-            <h2>Taming the Complexity of the Changing State</h2>  { /* seduced by technology */}
+            <h2>Taming the Complexity of the Changing State</h2>
           </Slide>
 
 
@@ -76,7 +68,6 @@ let Slideshow = React.createClass({
               'past/Flowstrates-2012.png',
               'past/summerseries/wald.png',
               'past/cb1.png',
-              //'past/aiddata-Argentina-correlation.png',
               'past/us-migrants-complexity-bundled.png',
               'past/summerseries/restaurants.png',
               'past/cgvis_onmac7.png',
@@ -84,14 +75,11 @@ let Slideshow = React.createClass({
               'past/summerseries/sbb.png',
               'past/plot_input_data__zoomed.png',
               'past/birdeye-graphs-4.png',
-              //'past/summerseries/verkehr.png',
               'past/aiddata2.png',
               'past/flowstrates-totals-in-maps4.png',
-              //'past/summerseries/anthems.png',
               'past/horizon3-tooltip.png',
               'past/berlin/edge-map.png',
               'past/summerseries/porsche.png',
-              //'past/berlin/od-map_20-crop.png',
               'past/summerseries/schweizen2.png',
               'past/ballot2.png',
               'past/summerseries/distanzen.jpg',
@@ -108,7 +96,6 @@ let Slideshow = React.createClass({
               'past/ww1.png',
               'past/ballot.png',
               'past/world-trade.png',
-
               'past/edge.png'
             ]} />          </Slide>
 
@@ -118,9 +105,6 @@ let Slideshow = React.createClass({
 
 
           <Slide name="civil-war">
-          {
-            // our less far ancestors had to resort to using paper
-            }
             <Figure name="history-of-civil-war.png" />
           </Slide>
 
@@ -143,25 +127,12 @@ let Slideshow = React.createClass({
           <Slide>
             <h1>{'Why is it hard?'}</h1>
             <Figure name="state-transitions.svg" />
-          { /*
-             we have to model the state transitions between all pairs of states
-
-             when the state changes we  need to update the visual
-             representation differently depending on what the previous state was
-           */}
           </Slide>
 
           <Slide>
             <h1>{'Really?'}</h1>
             <Figure name="state-transitions.svg" />
           </Slide>
-
-
-
-
-          {
-            //ww1
-            }
 
           <Slide>
             <Figure name="gog.jpg" width={980}/>
@@ -172,21 +143,6 @@ let Slideshow = React.createClass({
             <Figure name="gog-example.png" width={800}/>
           </Slide>
 
-
-          <Slide>
-            <p className="center">
-            DATA {'\u2192'} aesthetic attrs of geom objects
-            </p>
-          </Slide>
-
-        {
-
-          //<Slide>
-          //  <p className="center">
-          //  {'\u2a0d'}: DATA  {'\u2192'} geom objects
-          //  </p>
-          //</Slide>
-          }
 
           <Slide>
             <p className="center">
@@ -201,35 +157,19 @@ let Slideshow = React.createClass({
           </Slide>
 
 
-        {
-          //<Slide>
-          //  <p className="center">
-          //    D3 is fantastic
-          //  </p>
-          //</Slide>
-          //
-          //<Slide>
-          //  <p className="center">
-          //    D3 has great support for interaction
-          //  </p>
-          //</Slide>
-          }
-
-         {
-          //<Slide>
-          //  <p className="center">
-          //    Works great for small projects
-          //  </p>
-          //</Slide>
-          }
-
           <Slide>
             <p className="center">
              {'Does it scale?'}
             </p>
           </Slide>
 
-          { ww1 }
+          {
+            <Slide>
+              <iframe src="interactive/ww1/index.html"
+                  width="955" height="894" style={{transform: 'scale(0.8)', border: 'none'}}
+                  scrolling="no" />
+            </Slide>
+          }
 
 
           <Slide>
@@ -238,8 +178,8 @@ let Slideshow = React.createClass({
               <Snippet name="reusable-chart" font={0.6} />
               <ul>
                 <li>{'Component model?'}</li>
-                <li>{'How to handle state?'}</li>  { /* it doesn't tell us, have to come up with something ad hoc */ }
-                <li>{'Data flow?'}</li>  { /* we still end up with too many dependencies, or full render */ }
+                <li>{'How to handle state?'}</li>
+                <li>{'Data flow?'}</li>
               </ul>
             </Columns>
           </Slide>
@@ -254,24 +194,6 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-          {
-            //<Slide>
-            //  <h1>MVC</h1>
-            //  <ul>
-            //    <li>Models are designed for views</li>
-            //    <li>State is scattered and redundant</li>
-            //    <li>Many dependencies</li>
-            //    <li>Hard to reason about state transitions</li>
-            //   {
-            //  //=>
-            //  //   <li>Inconsistent state</li>
-            //  //   <li>Requires lots of debugging</li>
-            //  // Partial updates and mutable state stored in the DOM also contribute to the complexity often leading to inconsistent representations of the application state.
-            //   }
-            //  </ul>
-            //</Slide>
-
-            }
             <Figure name="mvc-complex.svg"/>
           </Slide>
 
@@ -320,16 +242,6 @@ let Slideshow = React.createClass({
             </p>
           </Slide>
 
-
-        {
-          //<Slide>
-          //  <p className="center">
-          //    <div>Important: transitions between states are simpler
-          //    because we don't have to model transitions between each pair of states
-          //    </div>
-          //  </p>
-          //</Slide>
-          }
 
 
 
@@ -392,11 +304,6 @@ let Slideshow = React.createClass({
             <h3>Animation</h3>
           </Slide>
 
-        {
-          //<Slide>
-          //  <Snippet title="Animation" name="anim" font={0.6} output={false}  />
-          //</Slide>
-          }
 
 
           <Slide>
@@ -459,16 +366,6 @@ let Slideshow = React.createClass({
           <Slide>
             <h1>Flux</h1>
             <Figure name="flux.svg"/>
-          {
-          //    <li>Store: AppState + Business Logic</li>
-          //    <li>Action: Explicit update expression</li>
-          //    <li>Dispatcher:
-          //      <ul>
-          //        <li>Single action at any point in time, prevent cascading
-          //          (view A updates Store S, view B updates Store Q)</li>
-          //      </ul>
-          //    </li>
-            }
           </Slide>
 
           <Slide>
@@ -476,20 +373,6 @@ let Slideshow = React.createClass({
             <Figure name="relay.png" height="400"/>
           </Slide>
 
-
-
-
-        {
-
-        //<Slide>
-        //  <Snippet title="Animated CSS transition" name="choropleth/choropleth.js" font="0.75" />
-        //</Slide>
-                //
-        //  <Slide>
-        //    <Snippet title="Choropleth map" name="choropleth" font={0.75} />
-        //  </Slide>
-
-          }
 
 
 
@@ -508,17 +391,6 @@ let Slideshow = React.createClass({
           </Slide>
 
           <Slide>
-          {
-            // https://facebook.github.io/react/docs/advanced-performance.html#immutable-js-to-the-rescue
-
-            //Immutable-js is a Javascript collections library written by Lee Byron, which Facebook recently open-sourced. It provides immutable persistent collections via structural sharing. Lets see what these properties mean:
-            //
-            //Immutable: once created, a collection cannot be altered at another point in time.
-            //Persistent: new collections can be created from a previous collection and a mutation such as set. The original collection is still valid after the new collection is created.
-            //Structural Sharing: new collections are created using as much of the same structure as the original collection as possible, reducing copying to a minimum to achieve space efficiency and acceptable performance. If the new collection is equal to the original, the original is often returned.
-
-            // Immutability makes tracking changes cheap; a change will always result in a new object so we only need to check if the reference to the object has changed.
-            }
             <Snippet title="Immutable-js" name="immutable" />
           </Slide>
 
@@ -548,32 +420,12 @@ let Slideshow = React.createClass({
           <Slide>
             <h3>Hot code reloading</h3>
             <Attribution>gaearon.github.io/react-hot-loader/</Attribution>
-          {
-            // works only with Webpack
-
-            // Edit the component.  React Hot Loader will keep it mounted,  ** preserving the state. ***
-
-            // Editing render logic without losing the state
-          }
           </Slide>
 
 
           <Slide>
             <SlidersAverage />
           </Slide>
-
-
-
-
-
-        {
-          //<Slide>
-          //  Responsiveness
-          //  <iframe src="http://interactive.swissinfo.ch/ballot-vis/"
-          //    width="800" height="900"  style={{transform: 'scale(0.8)', border: 'none'}}
-          //    scrolling="no" />
-          //</Slide>
-          }
 
 
 
@@ -585,26 +437,12 @@ let Slideshow = React.createClass({
 
           <Slide>
             <h2>React enables an architecture that...</h2>
-          {
-          //<ul>
-          //  <li>
-          //    <ul>
-          //      <li>component model</li>
-          //      <li>one-way data flow</li>
-          //    </ul>
-          //  </li>
-          //</ul>
-          //
-          //<h2>and</h2>
-
-            }
             <ul>
               <li>
                 <ul>
                   <li>is easy to reason about</li>
-                  <li>scales to large applications</li>   { /* by providing a great component model */ }
+                  <li>scales to large applications</li>
                   <li>performs well when care is taken</li>
-                { /*<li>can still benefit from D3</li>*/ }
                   <li>is fun to use</li>
                 </ul>
               </li>
@@ -624,17 +462,6 @@ let Slideshow = React.createClass({
         </Player>
       </div>
     );
-          //<Slide>
-          //  <code>
-          //  {"React.render(React.DOM.h1({id: 'Hello'}, 'Hello World'), document.body);"}
-          //  </code>
-          //</Slide>
-
-    //<Slide name="big-data">
-    //  <h1>BIG DATA</h1>
-    //  Summarization + Interactivity
-    //</Slide>
-
 
   }
 
