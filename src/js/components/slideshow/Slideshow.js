@@ -165,7 +165,7 @@ let Slideshow = React.createClass({
 
           {
             <Slide>
-              <iframe src="interactive/ww1/index.html"
+              <iframe src="http://maps.nzzdali.ch.global.prod.fastly.net/nzzdata/erster-weltkrieg/"
                   width="955" height="894" style={{transform: 'scale(0.8)', border: 'none'}}
                   scrolling="no" />
             </Slide>
