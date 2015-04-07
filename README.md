@@ -14,15 +14,11 @@ If you have Homebrew use:
 
 
 
-## Development
+## Running locally
 
 Run the following in the console:
 
-    make server
+    make
 
-
-## Building a dist version
-
-
-    make dist
-
+Once the app is built, it should open in the browser:
+[http://localhost:8008/](http://localhost:8008/)
