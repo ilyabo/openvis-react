@@ -1,5 +1,8 @@
-# OpenVis - Dataviz with React
+# OpenVis - Interactive Datavis with React
 
+
+Slides of the talk "Interactive Datavis with React: Taming the Complexity of the Changing State"
+presented at [OpenVis](http://openvisconf.com) in April 2015.
 
 
 ## Requirements
