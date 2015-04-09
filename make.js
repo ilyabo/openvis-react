@@ -8,7 +8,6 @@ var mountFolder = function (connect, dir) {
 };
 
 
-var webpackDistConfig = require('./webpack.dist.config.js');
 
 module.exports = function (grunt) {
   // Let *load-grunt-tasks* require everything
@@ -19,14 +18,6 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: pkgConfig,
-
-    webpack: {
-      options: webpackDistConfig,
-
-      dist: {
-        cache: false
-      }
-    },
 
     'webpack-dev-server': {
       options: {
