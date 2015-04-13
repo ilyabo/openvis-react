@@ -8,6 +8,23 @@ var mountFolder = function (connect, dir) {
 };
 
 
+var moduleLoaders = {
+  loaders: [{
+    test: /\.js$/,
+    exclude: /node_modules|snippets/,
+    loader: 'react-hot!jsx-loader?harmony!babel'
+  },
+  { test: /\.jsx$/, loader: 'jsx-loader?harmony' },
+  { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&includePaths[]='+ bourbon},
+  {
+    test: /\.css$/,
+    loader: 'style-loader!css-loader'
+  }, {
+    test: /\.(png|jpg)$/,
+    loader: 'url-loader?limit=8192'
+  }]
+};
+
 
 module.exports = function (grunt) {
   // Let *load-grunt-tasks* require everything
@@ -18,6 +35,44 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: pkgConfig,
+
+    webpack: {
+      options: {
+
+        output: {
+          publicPath: '/assets/',
+          path: 'dist/assets/',
+          filename: 'main.js'
+        },
+
+        debug: false,
+        devtool: false,
+        entry: './src/js/main.js',
+
+        stats: {
+          colors: true,
+          reasons: false
+        },
+
+        plugins: [
+          new webpack.optimize.DedupePlugin(),
+          new webpack.optimize.UglifyJsPlugin(),
+          new webpack.optimize.OccurenceOrderPlugin(),
+          new webpack.optimize.AggressiveMergingPlugin()
+        ],
+
+        resolve: {
+          extensions: ['', '.js'],
+          modulesDirectories: [ 'node_modules', 'src/js' ]
+        },
+
+        module: moduleLoaders
+      },
+
+      dist: {
+        cache: false
+      }
+    },
 
     'webpack-dev-server': {
       options: {
@@ -46,22 +101,7 @@ module.exports = function (grunt) {
             extensions: ['', '.js', '.jsx'],
             modulesDirectories: [ 'node_modules', 'src/js' ]
           },
-          module: {
-            loaders: [{
-              test: /\.js$/,
-              exclude: /node_modules|snippets/,
-              loader: 'react-hot!jsx-loader?harmony!babel'
-            },
-            { test: /\.jsx$/, loader: 'jsx-loader?harmony' },
-            { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&includePaths[]='+ bourbon},
-            {
-              test: /\.css$/,
-              loader: 'style-loader!css-loader'
-            }, {
-              test: /\.(png|jpg)$/,
-              loader: 'url-loader?limit=8192'
-            }]
-          },
+          module: moduleLoaders,
 
           plugins: [
             new webpack.HotModuleReplacementPlugin(),
@@ -118,10 +158,11 @@ module.exports = function (grunt) {
             filter: 'isFile'
           },
           {
-            flatten: true,
+            flatten: false,
             expand: true,
-            src: ['<%= pkg.src %>/images/*'],
-            dest: '<%= pkg.dist %>/images/'
+            cwd: '<%= pkg.src %>/',
+            src: ['images/**', 'interactive/**'],
+            dest: '<%= pkg.dist %>/'
           }
         ]
       }

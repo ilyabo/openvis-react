@@ -11,6 +11,9 @@ all: server
 server: install
 	$(GRUNT) serve
 
+dist: install
+	$(GRUNT) build
+
 _setenv-production:
 	$(eval ENV :="production")
 

@@ -22,7 +22,7 @@ var Slider = React.createClass({
               width={width} 
               height={height} />
         <text x={width/2} y={height/2}>{
-          title+': '+Math.round(value)+'%'
+          title+': '+Math.round(value*100)+'%'
         }</text>
       </svg>
     );
