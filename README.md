@@ -1,8 +1,11 @@
 # OpenVis - Interactive Datavis with React
 
 
-Slides of the talk "Interactive Datavis with React: Taming the Complexity of the Changing State"
+Source code for the [slides](http://ilya.boyandin.me/openvis-react) of the talk "Interactive Datavis with React: Taming the Complexity of the Changing State"
 presented at [OpenVis](http://openvisconf.com) in April 2015.
+
+
+Find the actual slides at [ilya.boyandin.me/openvis-react](http://ilya.boyandin.me/openvis-react).
 
 
 ## Requirements
