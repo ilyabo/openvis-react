@@ -14,6 +14,7 @@
     "flux": "^2.0.1",
     "highlight.js": "^8.4.0",
     "react": "^0.13.0",
+    "react-hammerjs": "^0.2.2",
     "react-highlight": "^0.4.1",
     "react-prefixr": "^0.1.0",
     "underscore": "^1.8.1"

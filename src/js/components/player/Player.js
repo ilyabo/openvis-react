@@ -1,6 +1,7 @@
 const React = require('react/addons');
 const _ = require('underscore');
 const Actions = require('actions/Actions');
+const Hammer = require('react-hammerjs');
 
 require('./Player.scss');
 
@@ -24,7 +25,7 @@ let Player = React.createClass({
     let {children, currentSlide} = this.props;
     let {scale} = this.state;
     return (
-      <div className="Player">
+      <Hammer className="Player" onSwipe={this.handlePan}>
         { !children ? null :
           <React.addons.TransitionGroup transitionName="slide" component="div">
             { React.addons.cloneWithProps(children[currentSlide - 1],
@@ -39,20 +40,39 @@ let Player = React.createClass({
         <div className="Player-current">
           {currentSlide} of {children.length}
         </div>
-      </div>
+      </Hammer>
     );
   },
 
-  handleKeydown(event) {
+  handlePan(e) {
+    console.log(e.deltaX);
+    if (e.deltaX < -200) {
+      this.handleNext();
+    }
+    else if (e.deltaX > 200) {
+      this.handlePrev();
+    }
+  },
+
+  handlePrev() {
     let {children, currentSlide} = this.props;
+    if (currentSlide > 1) Actions.prev(); else Actions.jumpTo(children.length);
+  },
+
+  handleNext() {
+    let {children, currentSlide} = this.props;
+    if (currentSlide < children.length) Actions.next(); else Actions.jumpTo(1);
+  },
+
+  handleKeydown(event) {
     switch (KEYS[event.which]) {
       case 'left':
-        if (currentSlide > 1) Actions.prev(); else Actions.jumpTo(children.length);
+        this.handlePrev();
         break;
 
       case 'right':
       case 'space':
-        if (currentSlide < children.length) Actions.next(); else Actions.jumpTo(1);
+        this.handleNext();
         break;
     }
   },
