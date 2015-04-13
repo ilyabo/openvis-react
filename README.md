@@ -4,20 +4,19 @@
 Source code for the [slides](http://ilya.boyandin.me/openvis-react) of the talk "Interactive Datavis with React: Taming the Complexity of the Changing State"
 presented at [OpenVis](http://openvisconf.com) in April 2015.
 
-
 Find the actual slides at [ilya.boyandin.me/openvis-react](http://ilya.boyandin.me/openvis-react).
 
+The slides work best in Chrome.
 
-## Requirements
+
+
+## Running locally
+
 
 To build and to run the app you need to install [Node.js](http://nodejs.org/) in your system.
 If you have Homebrew use:
 
     brew install node
-
-
-
-## Running locally
 
 Run the following in the console:
 
