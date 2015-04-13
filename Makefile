@@ -30,32 +30,28 @@ node_modules: package.json
 
 
 
-deploy: dist _prepare-deployment _do_deploy _clean-deployment
+deploy:
+	@echo "> Cleaning deployment"
+	@rm -rf /tmp/$(TEMP_DIR_NAME)
 
-_prepare-deployment:
 	@echo "> Preparing for deployment"
 	@mkdir -p /tmp/$(TEMP_DIR_NAME)
 	@echo "> Copying the files to deploy"
 	@cp -r dist/ /tmp/$(TEMP_DIR_NAME)
 
-_do_deploy:
 	@echo ""
 	@echo "> Deploying the $(ENV) app"
 	@echo ""
 
-	@#change to whichever directory this lives in
 	@cd /tmp/$(TEMP_DIR_NAME); \
 	git init .; \
 	git remote add origin git@github.com:ilyabo/$(APP).git; \
+	git checkout --orphan gh-pages; \
 	git add .; \
-	git commit -am 'deploying the app'
-
-	@#push back to heroku, open web browser, and remove git repository
-	@cd /tmp/$(TEMP_DIR_NAME); \
+	git commit -am 'deploying the app'; \
 	git push origin gh-pages -f
 
-
-
-_clean-deployment:
 	@echo "> Cleaning deployment"
 	@rm -rf /tmp/$(TEMP_DIR_NAME)
+
+
