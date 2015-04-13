@@ -44,7 +44,7 @@ let Snippet = React.createClass({
         {!output ? null :
           <td style={{verticalAlign:'top'}}>
             <iframe  className="Snippet-output"
-              src={'../../../../interactive/snippets/' + name + '/index.html'}
+              src={'interactive/snippets/' + name + '/index.html'}
               width="400" height="400"
               scrolling="no" />
           </td>
