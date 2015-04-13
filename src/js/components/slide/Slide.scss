@@ -14,7 +14,7 @@
 
 .Slide-outer {
   @include position(absolute, 50% null null 50%);
-  transform: translate(-50%, -50%);
+  @include transform(translate(-50%, -50%));
   @include size(100% auto);
   text-align: center;
 }

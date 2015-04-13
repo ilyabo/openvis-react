@@ -1,6 +1,7 @@
 const React = require('react');
 const d3 = require('d3');
 const FADE_DURATION = 750;
+const s = require('react-prefixr');
 
 require('./Slide.scss');
 
@@ -15,7 +16,7 @@ let Slide = React.createClass({
     let {children, scale, name} = this.props;
     return (
       <div className={'Slide'+(name ? ' '+name : '')}
-           style={{transform: 'translate(-50%, -50%) scale('+scale+')'}}>
+           style={s({transform: 'translate(-50%, -50%) scale('+scale+')'})}>
         <div className="Slide-outer">
           <div className="Slide-content">
             { children }
