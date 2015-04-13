@@ -30,7 +30,7 @@ node_modules: package.json
 
 
 
-deploy:
+deploy: dist
 	@echo "> Cleaning deployment"
 	@rm -rf /tmp/$(TEMP_DIR_NAME)
 
