@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: Helvetica, sans-serif;
+  margin: 0;
+}
+circle {
+  fill: #3E6E9C;
+}
+
+</style>
+<body>
+<script src="../../lib/d3.v3.min.js"></script>
+<script src="../../lib/react-with-addons.js"></script>
+<script src="../../lib/JSXTransformer.js"></script>
+<script type="text/jsx;harmony=true">
+
+function generateRandomData() {
+  return d3.range(20).map(function() {
+    return {
+      a: Math.random(),
+      b: Math.random(),
+      c: Math.random()
+    };
+  });
+}
+</script>
+<script type="text/jsx;harmony=true" src="../scatterplot-d3/scatterplot-d3.js"></script>
+
+<script type="text/jsx;harmony=true" src="scatterplot-anim.js"></script>
+
+
+
+<script type="text/jsx;harmony=true">
+function update() {
+  React.render(
+    <ScatterPlot points={generateRandomData()} />,
+    document.body
+  );
+}
+
+update();
+setInterval(update, 1000);
+</script>

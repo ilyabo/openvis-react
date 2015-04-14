@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  .TileMap {
+    position: absolute;
+    overflow: hidden;
+    background: white;
+  }
+
+  .TileMap-layer {
+    position: absolute;
+  }
+
+  .RasterTile {
+    opacity: 0.3;
+    position: absolute;
+  }
+
+  .VectorTile {
+    position: absolute;
+  }
+  .VectorTile path {
+    stroke: crimson;
+    stroke-width: 2px;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .VectorTile .major_road { stroke: #776; }
+  .VectorTile .minor_road { stroke: #ccb; }
+  .VectorTile .highway { stroke: crimson; stroke-width: 4px; }
+  .VectorTile .rail { stroke: #7de; }
+
+  /* prevent overscrolling */
+  html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  body > div {
+      height: 100%;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+  }
+  /* endof prevent overscrolling */
+
+
+</style>
+<body>
+<script src="../../lib/d3.v3.min.js"></script>
+<script src="../../lib/d3.geo.tile.js"></script>
+<script src="../../lib/react-with-addons.js"></script>
+<script src="../../lib/JSXTransformer.js"></script>
+<script type="text/jsx;harmony=true" src="slippy-map-slow.js"></script>
+<script type="text/jsx;harmony=true">
+React.render(
+  <SlippyMap width={400} height={400} center={[-71.061964, 42.366665]} />,
+  document.body
+);
+</script>

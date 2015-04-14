@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 12px Helvetica, sans-serif;
+  position: relative;
+  width: 960px;
+  height: 500px;
+}
+
+.message {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  margin: -15px auto 0 auto;
+  line-height: 30px;
+  width: 500px;
+}
+
+.message--error {
+  color: red;
+}
+
+.country {
+  fill: #222;
+}
+
+.canton-boundaries {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1;
+}
+ 
+.municipality-boundaries {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .3;
+}
+ 
+</style>
+<body>
+<script src="../../lib/d3.v3.min.js"></script>
+<script src="../../lib/topojson.v1.min.js"></script>
+<script src="../../lib/react.min.js"></script>
+<script>
+
+var SwissMap = React.createClass({
+  getInitialState: function() {
+    return {
+      ch: null,
+      error: null
+    };
+  },
+  componentDidMount: function() {
+    // Artificially delay the loading, so the loading state stays visible for a while.
+    setTimeout(this.loadData, 2000);
+  },
+  loadData: function() {
+    d3.json(this.props.url, this.dataLoaded);
+  },
+  dataLoaded: function(err, data) {
+    if (err) return this.setState({error: err});
+    this.setState({data: data});
+  },
+  render: function() {
+    if (this.state.error) return React.DOM.div({className: 'message message--error'}, 'Whoops! ' + this.props.url + ' does not exist. Reload the page to try again.');
+    if (!this.state.data) return React.DOM.div({className: 'message'}, 'Loading ' + this.props.url);
+
+    var ch = this.state.data,
+        country = topojson.feature(ch, ch.objects.country),
+        municipalityBoundaries = topojson.mesh(ch, ch.objects.municipalities, function(a, b) { return a !== b; }),
+        cantonBoundaries = topojson.mesh(ch, ch.objects.cantons, function(a, b) { return a !== b; });
+
+    var path = d3.geo.path()
+      .projection(null);
+
+    return React.DOM.svg({width: this.props.width, height: this.props.height},
+      React.DOM.path({
+        className: 'country', 
+        d: path(country)
+      }),
+      React.DOM.path({
+        className: 'municipality-boundaries', 
+        d: path(municipalityBoundaries)
+      }),
+      React.DOM.path({
+        className: 'canton-boundaries', 
+        d: path(cantonBoundaries)
+      })
+    );
+  }
+});
+ 
+React.renderComponent(
+  SwissMap({
+    url: Math.random() > 0.3 ? 'ch.json' : 'not-there.json',
+    width: 960,
+    height: 500
+  }),
+  document.body
+);
+ 
+</script>

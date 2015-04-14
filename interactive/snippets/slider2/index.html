@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: Helvetica, sans-serif;
+}
+/* Slider */
+.Slider {
+  display: inline-block;
+  background: white;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  margin-top: 3px;
+  margin-bottom: 3px;
+  cursor: ew-resize;
+}
+
+.Slider-border {
+  stroke: #666;
+  stroke-width: 1;
+  fill: none;
+  shape-rendering: crispEdges;
+}
+
+.Slider-fill {
+  stroke: none;
+  shape-rendering: crispEdges;
+  fill: #C1D2DC;
+}
+
+.Slider-axis-label {
+  dominant-baseline: middle;
+  alignment-baseline: middle;
+  font-size: 0.7rem;
+  fill: #999;
+}
+.Slider-axis-label.left {
+  text-anchor: start;
+}
+.Slider-axis-label.right {
+  text-anchor: end;
+}
+
+.Slider-value {
+  color: white;
+}
+
+
+.Slider text {
+  font-size: 0.9rem;
+  dominant-baseline: middle;
+  alignment-baseline: middle;
+  text-anchor: middle;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+</style>
+<body>
+<script src="../../lib/d3.v3.min.js"></script>
+<script src="../../lib/react-with-addons.js"></script>
+<script src="../../lib/JSXTransformer.js"></script>
+<script type="text/jsx;harmony=true">
+var Slider = React.createClass({
+
+  props: {
+    width: React.PropTypes.number.isRequired,
+    height: React.PropTypes.number.isRequired,
+    title: React.PropTypes.string.isRequired,
+    value: React.PropTypes.number.isRequired,
+    onValueChange: React.PropTypes.func.isRequired
+  },
+
+  render() {
+    var width = this.props.width,
+        height = this.props.height,
+        value = this.props.value,
+        title = this.props.title;
+    return (
+      <svg className="Slider" width={width} height={height}>
+        <rect className="Slider-fill"
+              width={width * value}
+              height={height} />
+        <rect className="Slider-border"
+              width={width}
+              height={height} />
+        <text x={width/2} y={height/2}>{title+': '+Math.round(value*100)+'%'}</text>
+      </svg>
+    );
+  },
+
+  handleDrag() {
+    var posY = d3.mouse(this.getDOMNode())[0],
+        newValue = Math.max(0, Math.min(1, posY / this.props.width));
+    this.props.onValueChange(newValue);
+  },
+
+  componentDidMount() {
+    var drag = d3.behavior.drag()
+      .on('drag', this.handleDrag);
+
+    d3.select(this.getDOMNode())
+      .call(drag);
+  }
+});
+
+
+
+</script>
+<script type="text/jsx;harmony=true" src="slider2.js"></script>

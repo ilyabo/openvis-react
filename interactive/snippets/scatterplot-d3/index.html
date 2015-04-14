@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: Helvetica, sans-serif;
+  margin: 0;
+}
+circle {
+  fill: #3E6E9C;
+}
+
+</style>
+<body>
+<script src="../../lib/d3.v3.min.js"></script>
+<script src="../../lib/react.min.js"></script>
+<script src="../../lib/JSXTransformer.js"></script>
+<script type="text/jsx;harmony=true" src="scatterplot-d3.js"></script>
+<script type="text/jsx;harmony=true">
+var data = [
+  { a: 0.1, b: 0.7, c: 0.3 },
+  { a: 0.3, b: 0.5, c: 0.4 },
+  { a: 0.4, b: 0.5, c: 0.5 },
+  { a: 0.5, b: 0.4, c: 0.7 },
+  { a: 0.7, b: 0.7, c: 0.8 }
+];
+
+React.renderComponent(
+  <ScatterPlot points={data} />,
+  document.body
+);
+
+</script>

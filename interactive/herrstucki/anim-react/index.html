@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<script src="../../lib/d3.v3.min.js"></script>
+<script src="d3-grid.js"></script>
+<script src="../../lib/react-with-addons.min.js"></script>
+<script src="../../lib/JSXTransformer.js"></script>
+<script type="text/jsx;harmony=true">
+
+var width = 800,
+    height = 500
+    TAU = Math.PI * 2;
+
+var grid = d3.layout.grid()
+  .size([width, height]);
+
+var color = d3.scale.linear()
+  .interpolate(d3.interpolateHcl)
+  .domain([0, 100])
+  .range(["#F66A96", "#3E6E9C"]);
+
+var data = d3.range(5000).map(function(d) { 
+  return {
+    id: d,
+    size: 1 + Math.floor(Math.random() * 5),
+    r: Math.random() * 50,
+    color: Math.floor(Math.random() * 100),
+    f: (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 10000 + 1000)
+  }; 
+});
+
+var Svg = React.createClass({
+  getInitialState() {
+    return {
+      t: 0
+    }
+  },
+
+  update(t) {
+    this.setState({t});
+  },
+
+  componentDidMount() {
+    d3.timer(this.update);
+  },
+
+  render() {
+    return <svg width={this.props.width} height={this.props.height}>
+      {this.props.data.map((d) => {
+        var alpha = TAU / d.f * (this.state.t % d.f);
+        return <circle transform={"translate(" + (d.x + Math.cos(alpha) * d.r) + "," + (d.y + Math.sin(alpha) * d.r) + ")"} fill={color(d.color)} r={d.size} key={d.id} />
+      })}
+    </svg>;
+  }
+})
+
+React.render(<Svg width={width} height={height} data={grid(data)} />, document.body);
+
+//d3.select(self.frameElement).style("height", height + "px");
+
+</script>
