@@ -70,7 +70,9 @@ var SlippyMap = React.createClass({
     return (
       <div className="TileMap" style={{width: width, height: height}}>
         <div className="TileMap-layer"
-             style={{transform: this.getTransform(tiles.scale, tiles.translate) }}>
+             style={{
+              transform: this.getTransform(tiles.scale, tiles.translate),
+              '-webkit-transform': this.getTransform(tiles.scale, tiles.translate) }}>
             {tiles.map(d =>
                 <RasterTile key={d.join('|')} x={d[0]} y={d[1]} z={d[2]} />
             )}
