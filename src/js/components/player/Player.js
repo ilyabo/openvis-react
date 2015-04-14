@@ -46,10 +46,10 @@ let Player = React.createClass({
 
   handlePan(e) {
     console.log(e.deltaX);
-    if (e.deltaX < -200) {
+    if (e.deltaX < -100) {
       this.handleNext();
     }
-    else if (e.deltaX > 200) {
+    else if (e.deltaX > 100) {
       this.handlePrev();
     }
   },
