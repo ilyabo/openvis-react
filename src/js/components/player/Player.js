@@ -25,7 +25,7 @@ let Player = React.createClass({
     let {children, currentSlide} = this.props;
     let {scale} = this.state;
     return (
-      <Hammer className="Player" onSwipe={this.handlePan}>
+      <Hammer className="Player" onTap={this.handleTap}>
         { !children ? null :
           <React.addons.TransitionGroup transitionName="slide" component="div">
             { React.addons.cloneWithProps(children[currentSlide - 1],
@@ -44,12 +44,10 @@ let Player = React.createClass({
     );
   },
 
-  handlePan(e) {
-    console.log(e.deltaX);
-    if (e.deltaX < -100) {
+  handleTap(e) {
+    if (e.center.x >= window.innerWidth / 2) {
       this.handleNext();
-    }
-    else if (e.deltaX > 100) {
+    } else {
       this.handlePrev();
     }
   },
